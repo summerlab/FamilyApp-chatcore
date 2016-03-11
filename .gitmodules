@@ -1,0 +1,6 @@
+[submodule "commons"]
+	path = commons
+	url = http://yining@192.168.1.222:8080/r/android/Commons.git
+[submodule "timescore"]
+	path = timescore
+	url = http://yining@192.168.1.222:8080/r/android/TimesCore.git
