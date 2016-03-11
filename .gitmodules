@@ -4,3 +4,6 @@
 [submodule "timescore"]
 	path = timescore
 	url = http://yining@192.168.1.222:8080/r/android/TimesCore.git
+[submodule "chatcore"]
+	path = chatcore
+	url = http://yining@192.168.1.222:8080/r/android/ChatCore.git
