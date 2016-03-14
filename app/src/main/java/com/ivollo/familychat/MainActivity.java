@@ -38,4 +38,6 @@ public class MainActivity extends BindingActivity {
         //使用被注入的mainVM绑定到xml里data段的vm
         ((ActivityMainBinding) binding).setVm(mainVM);
     }
+
+
 }
