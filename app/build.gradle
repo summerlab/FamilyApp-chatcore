@@ -14,7 +14,14 @@ android {
         //      Required by carbon
         renderscriptTargetApi 20
         renderscriptSupportModeEnabled true
+
+        multiDexEnabled true
     }
+
+    dexOptions {
+        jumboMode = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
