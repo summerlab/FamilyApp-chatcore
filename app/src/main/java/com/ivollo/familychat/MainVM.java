@@ -1,6 +1,7 @@
 package com.ivollo.familychat;
 
 import android.databinding.ObservableBoolean;
+import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +20,7 @@ public class MainVM {
 
 
     //被绑定到第二个按钮的文本
-    public TwoWayBoundString statusText = new TwoWayBoundString();
+    public ObservableField<String> statusText = new ObservableField<>("0");
     //被绑定到第二个按钮的Enabled属性
     public ObservableBoolean btn2Enabled = new ObservableBoolean();
     //被绑定到第一个按钮的文本
