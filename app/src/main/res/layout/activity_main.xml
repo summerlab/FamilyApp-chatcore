@@ -21,8 +21,7 @@
         <carbon.widget.Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{vm.updateCount}"
-            android:text="@{vm.count}" />
+            android:onClick="@{vm.updateCount}" />
 
         <android.support.v7.widget.Space
             android:layout_width="match_parent"
