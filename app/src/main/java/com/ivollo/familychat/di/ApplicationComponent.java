@@ -1,5 +1,6 @@
 package com.ivollo.familychat.di;
 
+import com.ivollo.chatcore.di.ChatModule;
 import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.commons.di.CommonModule;
 import com.ivollo.familychat.MainActivity;
@@ -16,7 +17,7 @@ import dagger.Component;
  *         Created on 2016/3/9 12:57
  */
 @Singleton
-@Component(modules = {CommonModule.class, TimesModule.class, ApplicationModule.class})
+@Component(modules = {CommonModule.class, ChatModule.class, TimesModule.class, ApplicationModule.class})
 public interface ApplicationComponent {
     void inject(MainActivity activity);
 

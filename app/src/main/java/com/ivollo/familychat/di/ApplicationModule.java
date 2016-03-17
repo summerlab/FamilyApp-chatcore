@@ -5,6 +5,7 @@ import android.app.Application;
 import com.easemob.chat.EMChat;
 import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.familychat.MainVM;
+import com.ivollo.familychat.Navigator;
 
 import javax.inject.Singleton;
 
@@ -39,4 +40,9 @@ public class ApplicationModule {
         return new MainVM(oAuth2);
     }
 
+    @Provides
+    @Singleton
+    Navigator navigator() {
+        return new Navigator();
+    }
 }

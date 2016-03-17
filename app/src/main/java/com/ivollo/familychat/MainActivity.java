@@ -2,6 +2,7 @@ package com.ivollo.familychat;
 
 import android.databinding.ViewDataBinding;
 
+import com.ivollo.chatcore.binding.ChatVM;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.databinding.ActivityMainBinding;
 
@@ -24,12 +25,17 @@ public class MainActivity extends BindingActivity {
     @Inject
     MainVM mainVM;
 
+    @Inject
+    ChatVM chatVM;
 
+    @Inject
+    Navigator navigator;
 
     /**
      * 基类在使用getLayoutResId()返回的xml id进行数据绑定设置后，会将binding对象传入
      * 在这里需要将binding转换为本ACTIVITY实际生成的BINDING类(ActivityMainBinding)
      * 并将xml 的 data段里的所有variable依次进行赋值即可完成绑定。
+     *
      * @param binding 数据绑定对象
      */
     @Override
@@ -38,7 +44,10 @@ public class MainActivity extends BindingActivity {
         TheApplication.getApplicationComponent().inject(this);
 
         //使用被注入的mainVM绑定到xml里data段的vm
-        ((ActivityMainBinding) binding).setVm(mainVM);
+        ((ActivityMainBinding) binding).setMainVM(mainVM);
+        ((ActivityMainBinding) binding).setChatVM(chatVM);
+        ((ActivityMainBinding) binding).setNavigator(navigator);
+
     }
 
 
