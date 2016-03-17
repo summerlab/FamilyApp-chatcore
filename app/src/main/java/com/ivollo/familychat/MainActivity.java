@@ -24,6 +24,8 @@ public class MainActivity extends BindingActivity {
     @Inject
     MainVM mainVM;
 
+
+
     /**
      * 基类在使用getLayoutResId()返回的xml id进行数据绑定设置后，会将binding对象传入
      * 在这里需要将binding转换为本ACTIVITY实际生成的BINDING类(ActivityMainBinding)

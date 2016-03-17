@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.ivollo.familychat.MainVM" />
+            type="com.ivollo.familychat.MainVM"/>
 
     </data>
 
@@ -18,21 +18,99 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-        <carbon.widget.Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{vm.updateCount}" />
-
-        <android.support.v7.widget.Space
+        <carbon.widget.LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_10" />
-
-        <carbon.widget.Button
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
-            android:enabled="@{vm.btn2Enabled}"
-            android:onClick="@{vm.getList}"
-            android:text="@{vm.statusText}" />
+            android:orientation="vertical">
+
+            <carbon.widget.LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <carbon.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ACCESS:"/>
+
+                <carbon.widget.TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{vm.accessToken}"/>
+            </carbon.widget.LinearLayout>
+
+            <carbon.widget.LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <carbon.widget.TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="REFRESH:"/>
+
+                <carbon.widget.TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.refreshToken}"/>
+            </carbon.widget.LinearLayout>
+
+            <carbon.widget.LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <carbon.widget.TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="EXPIRED:"/>
+
+                <carbon.widget.TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(vm.expireTime)}"/>
+            </carbon.widget.LinearLayout>
+
+
+            <carbon.widget.Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:onClick="@{vm.getToken}"
+                android:text="Refresh Token"/>
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_8"/>
+
+            <carbon.widget.Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:onClick="@{vm.login}"
+                android:text="Login"/>
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_8"/>
+
+            <carbon.widget.Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:onClick="@{vm.register}"
+                android:text="Register"/>
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_8"/>
+
+            <carbon.widget.Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:onClick="@{vm.logout}"
+                android:text="Log Out"/>
+        </carbon.widget.LinearLayout>
     </carbon.widget.LinearLayout>
 </layout>

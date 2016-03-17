@@ -1,5 +1,6 @@
 package com.ivollo.familychat.di;
 
+import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.commons.di.CommonModule;
 import com.ivollo.familychat.MainActivity;
 import com.ivollo.timescore.di.TimesModule;
@@ -18,5 +19,7 @@ import dagger.Component;
 @Component(modules = {CommonModule.class, TimesModule.class, ApplicationModule.class})
 public interface ApplicationComponent {
     void inject(MainActivity activity);
+
+    OAuth2 getOAuth2();
 }
 

@@ -3,6 +3,7 @@ package com.ivollo.familychat.di;
 import android.app.Application;
 
 import com.easemob.chat.EMChat;
+import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.familychat.MainVM;
 
 import javax.inject.Singleton;
@@ -34,8 +35,8 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    MainVM mainVM() {
-        return new MainVM();
+    MainVM mainVM(OAuth2 oAuth2) {
+        return new MainVM(oAuth2);
     }
 
 }
