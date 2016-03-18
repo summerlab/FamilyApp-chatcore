@@ -12,4 +12,89 @@
         <item name="colorAccent">@color/accent</item>
     </style>
 
+
+    <style name="Icon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="materialIconColor">@color/icons</item>
+        <item name="android:scaleType">center</item>
+        <item name="materialIconSize">@dimen/icon_normal</item>
+    </style>
+
+    <style name="IconButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="materialIconColor">@color/primary</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:padding">@dimen/icon_padding</item>
+        <item name="materialIconSize">@dimen/icon_size</item>
+    </style>
+
+    <style name="Icon.Accent">
+        <item name="materialIconColor">@color/accent</item>
+    </style>
+
+    <style name="Icon.Primary">
+        <item name="materialIconColor">@color/primary</item>
+    </style>
+
+    <style name="Icon.Inverse">
+        <item name="materialIconColor">@color/inverse_text</item>
+    </style>
+    <style name="EditTextIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="materialIconColor">?attr/colorPrimary</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:paddingLeft">@dimen/icon_padding</item>
+        <item name="android:paddingRight">@dimen/icon_padding</item>
+        <item name="materialIconSize">@dimen/icon_size</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:textSize">@dimen/text_big</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Button" parent="carbon_Button">
+        <item name="android:minWidth">@dimen/dp_56</item>
+        <item name="android:minHeight">@dimen/dp_40</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="carbon_cornerRadius">@dimen/dp_4</item>
+    </style>
+    <style name="Button.Flat">
+        <item name="carbon_elevation">@dimen/carbon_elevationFlat</item>
+        <item name="android:background">@null</item>
+        <item name="android:textAppearance">?attr/carbon_textAppearanceButton</item>
+    </style>
+
+    <style name="ToolbarIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/toolbar_height</item>
+        <item name="materialIconColor">@color/inverse_text</item>
+    </style>
+
+    <style name="ToolbarIconButton">
+        <item name="android:layout_width">@dimen/toolbar_height</item>
+        <item name="android:layout_height">@dimen/toolbar_height</item>
+        <item name="android:paddingTop">@dimen/dp_14</item>
+        <item name="android:paddingBottom">@dimen/dp_14</item>
+        <item name="android:paddingLeft">@dimen/dp_14</item>
+        <item name="android:paddingRight">@dimen/dp_14</item>
+        <item name="android:clickable">true</item>
+        <item name="carbon_rippleColor">@color/carbon_ripple_light</item>
+        <item name="materialIconColor">@color/inverse_text</item>
+    </style>
+
+    <style name="ToolbarIconButton.Back">
+        <item name="materialIcon">arrow_left</item>
+    </style>
 </resources>

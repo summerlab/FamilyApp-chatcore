@@ -1,10 +1,16 @@
 package com.ivollo.familychat;
 
+import android.content.Intent;
 import android.databinding.ViewDataBinding;
 
 import com.ivollo.chatcore.binding.ChatVM;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.databinding.ActivityMainBinding;
+import com.ivollo.familychat.login.LoginActivity;
+import com.ivollo.familychat.navigation.NavigateToLoginEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import javax.inject.Inject;
 
@@ -47,8 +53,13 @@ public class MainActivity extends BindingActivity {
         ((ActivityMainBinding) binding).setMainVM(mainVM);
         ((ActivityMainBinding) binding).setChatVM(chatVM);
         ((ActivityMainBinding) binding).setNavigator(navigator);
+        EventBus.getDefault().register(this);
 
     }
 
+    @Subscribe
+    public void navigateToLogin(NavigateToLoginEvent event) {
+        startActivity(new Intent(this, LoginActivity.class));
+    }
 
 }

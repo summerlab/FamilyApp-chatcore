@@ -1,8 +1,11 @@
 package com.ivollo.familychat;
 
-import android.databinding.ObservableBoolean;
 import android.databinding.ObservableInt;
 import android.view.View;
+
+import com.ivollo.familychat.navigation.NavigateToLoginEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Comments:
@@ -23,6 +26,9 @@ public class Navigator {
             case R.id.navigate_test:
                 page = NavigationPage.TEST;
                 break;
+            case R.id.navigate_login:
+                EventBus.getDefault().post(new NavigateToLoginEvent());
+                return;
             default:
                 return;
         }
@@ -33,3 +39,4 @@ public class Navigator {
 
 
 }
+

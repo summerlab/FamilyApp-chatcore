@@ -4,6 +4,7 @@ import com.ivollo.chatcore.di.ChatModule;
 import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.commons.di.CommonModule;
 import com.ivollo.familychat.MainActivity;
+import com.ivollo.familychat.login.LoginActivity;
 import com.ivollo.timescore.di.TimesModule;
 
 import javax.inject.Singleton;
@@ -20,6 +21,8 @@ import dagger.Component;
 @Component(modules = {CommonModule.class, ChatModule.class, TimesModule.class, ApplicationModule.class})
 public interface ApplicationComponent {
     void inject(MainActivity activity);
+
+    void inject(LoginActivity activity);
 
     OAuth2 getOAuth2();
 }

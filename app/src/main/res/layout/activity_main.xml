@@ -50,7 +50,6 @@
             </FrameLayout>
         </FrameLayout>
 
-
         <carbon.widget.LinearLayout
             android:id="@+id/navigator"
             android:layout_width="match_parent"
@@ -128,6 +127,7 @@
             </carbon.widget.LinearLayout>
 
             <carbon.widget.LinearLayout
+                android:id="@+id/navigate_login"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

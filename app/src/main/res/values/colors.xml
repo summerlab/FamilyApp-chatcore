@@ -4,4 +4,7 @@
     <color name="primary_dark">#1560D2</color>
     <color name="primary_light">#BBDEFB</color>
     <color name="accent">@color/orange_700</color>
+
+    <color name="check_icon_checked">@color/primary</color>
+    <color name="check_icon_unchecked">@color/grey_400</color>
 </resources>

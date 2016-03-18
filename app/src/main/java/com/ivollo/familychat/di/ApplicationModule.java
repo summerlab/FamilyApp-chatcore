@@ -3,9 +3,11 @@ package com.ivollo.familychat.di;
 import android.app.Application;
 
 import com.easemob.chat.EMChat;
+import com.ivollo.commons.account.AccountApi;
 import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.familychat.MainVM;
 import com.ivollo.familychat.Navigator;
+import com.ivollo.familychat.login.LoginVM;
 
 import javax.inject.Singleton;
 
@@ -44,5 +46,11 @@ public class ApplicationModule {
     @Singleton
     Navigator navigator() {
         return new Navigator();
+    }
+
+    @Provides
+    @Singleton
+    LoginVM loginVM(OAuth2 oAuth2, AccountApi accountApi) {
+        return new LoginVM(oAuth2, accountApi);
     }
 }
