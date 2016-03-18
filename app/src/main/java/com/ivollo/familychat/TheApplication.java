@@ -30,7 +30,7 @@ public class TheApplication extends Application {
         CommonModule commonModule = new CommonModule(this, GlobalConstants.SERVER, GlobalConstants.OAUTH_CLIENT_ID,
                 GlobalConstants.OAUTH_CLIENT_SECRET, 200);
         applicationComponent = DaggerApplicationComponent.builder().commonModule(commonModule)
-                .chatModule(new ChatModule())
+                .chatModule(new ChatModule(this))
                 .timesModule(new TimesModule())
                 .applicationModule(new ApplicationModule(this))
                 .build();
