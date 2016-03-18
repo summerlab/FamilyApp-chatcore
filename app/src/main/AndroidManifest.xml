@@ -26,7 +26,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="EASEMOB_APPKEY"
-            android:value="YXA63RJriy4n66ukwdyrlXp0G8k4V_M"/>
+            android:value="9icloud#9imobile"/>
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="56d7d8bb67e58e3d0300393c"/>
