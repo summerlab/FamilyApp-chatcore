@@ -10,8 +10,8 @@
             type="com.ivollo.familychat.MainVM" />
 
         <variable
-            name="chatVM"
-            type="com.ivollo.chatcore.binding.ChatVM" />
+            name="friendVM"
+            type="com.ivollo.chatcore.binding.FriendVM" />
 
         <variable
             name="navigator"
@@ -46,7 +46,7 @@
 
                 <include
                     layout="@layout/page_contacts"
-                    bind:vm="@{chatVM}" />
+                    bind:vm="@{friendVM}" />
             </FrameLayout>
         </FrameLayout>
 

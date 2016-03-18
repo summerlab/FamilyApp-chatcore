@@ -3,9 +3,11 @@ package com.ivollo.familychat;
 import android.content.Intent;
 import android.databinding.ViewDataBinding;
 
-import com.ivollo.chatcore.binding.ChatVM;
+import com.ivollo.chatcore.binding.FriendVM;
+import com.ivollo.chatcore.event.NavigatoFriendAddEvent;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.databinding.ActivityMainBinding;
+import com.ivollo.familychat.friend.FriendAddActivity;
 import com.ivollo.familychat.login.LoginActivity;
 import com.ivollo.familychat.navigation.NavigateToLoginEvent;
 
@@ -32,7 +34,7 @@ public class MainActivity extends BindingActivity {
     MainVM mainVM;
 
     @Inject
-    ChatVM chatVM;
+    FriendVM friendVM;
 
     @Inject
     Navigator navigator;
@@ -51,10 +53,16 @@ public class MainActivity extends BindingActivity {
 
         //使用被注入的mainVM绑定到xml里data段的vm
         ((ActivityMainBinding) binding).setMainVM(mainVM);
-        ((ActivityMainBinding) binding).setChatVM(chatVM);
+        ((ActivityMainBinding) binding).setFriendVM(friendVM);
         ((ActivityMainBinding) binding).setNavigator(navigator);
-        EventBus.getDefault().register(this);
 
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
     }
 
     @Subscribe
@@ -62,4 +70,8 @@ public class MainActivity extends BindingActivity {
         startActivity(new Intent(this, LoginActivity.class));
     }
 
+    @Subscribe
+    public void navigateToFriendAdd(NavigatoFriendAddEvent event) {
+        startActivity(new Intent(this, FriendAddActivity.class));
+    }
 }

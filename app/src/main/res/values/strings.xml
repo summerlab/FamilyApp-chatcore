@@ -20,4 +20,8 @@
     <string name="login_action_register">用户注册</string>
 
     <string name="login_check_remember">记住</string>
+
+    <!--好友页-->
+    <string name="friend_add">添加好友</string>
+    <string name="friend_phone_hint">输入对方的手机号码</string>
 </resources>
