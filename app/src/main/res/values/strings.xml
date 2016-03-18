@@ -23,5 +23,6 @@
 
     <!--好友页-->
     <string name="friend_add">添加好友</string>
+    <string name="friend_load">获取好友列表</string>
     <string name="friend_phone_hint">输入对方的手机号码</string>
 </resources>

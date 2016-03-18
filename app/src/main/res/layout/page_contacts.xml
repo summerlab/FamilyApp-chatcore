@@ -24,6 +24,14 @@
             android:onClick="@{vm.onFriendAddNavigate}"
             android:text="@string/friend_add"/>
 
+        <carbon.widget.Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:enabled="@{vm.btnEnabled}"
+            android:onClick="@{vm.onFriendListLoad}"
+            android:text="@string/friend_load"/>
+
         <carbon.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"

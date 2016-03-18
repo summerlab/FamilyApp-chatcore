@@ -1,11 +1,14 @@
 package com.ivollo.familychat.login;
 
+import android.content.Intent;
 import android.databinding.ViewDataBinding;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.ivollo.commons.api.oauth.OAuth2TokenFailureEvent;
 import com.ivollo.commons.api.oauth.OAuth2TokenUpdatedEvent;
 import com.ivollo.commons.base.BindingActivity;
+import com.ivollo.familychat.MainActivity;
 import com.ivollo.familychat.R;
 import com.ivollo.familychat.TheApplication;
 import com.ivollo.familychat.databinding.ActivityLoginBinding;
@@ -36,7 +39,16 @@ public class LoginActivity extends BindingActivity {
         TheApplication.getApplicationComponent().inject(this);
 
         ((ActivityLoginBinding) binding).setLoginVM(loginVM);
+
         EventBus.getDefault().register(this);
+
+        loginVM.checkOAuthStatus();
+    }
+
+    @Override
+    protected void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
     }
 
     @Subscribe
@@ -46,6 +58,9 @@ public class LoginActivity extends BindingActivity {
 
     @Subscribe
     public void onLoginSuccess(OAuth2TokenUpdatedEvent event) {
-        finish();
+        if (null != event && !TextUtils.isEmpty(event.accessToken) && !TextUtils.isEmpty(event.refreshToken)) {
+            finish();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
     }
 }

@@ -89,7 +89,7 @@ public class MainActivity extends BindingActivity {
 
     @Subscribe
     public void navigateToLogin(NavigateToLoginEvent event) {
-        startActivity(new Intent(this, LoginActivity.class));
+//        startActivity(new Intent(this, LoginActivity.class));
     }
 
     @Subscribe
