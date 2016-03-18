@@ -24,10 +24,10 @@
             android:onClick="@{vm.onFriendAddNavigate}"
             android:text="@string/friend_add"/>
 
-        <!--<carbon.widget.RecyclerView
+        <carbon.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>-->
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
     </carbon.widget.LinearLayout>
 </layout>

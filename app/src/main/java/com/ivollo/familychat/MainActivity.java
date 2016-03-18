@@ -2,31 +2,29 @@ package com.ivollo.familychat;
 
 import android.content.Intent;
 import android.databinding.ViewDataBinding;
+import android.support.v7.widget.LinearLayoutManager;
 
+import com.ivollo.chatcore.bean.Friend;
 import com.ivollo.chatcore.binding.FriendVM;
 import com.ivollo.chatcore.event.NavigatoFriendAddEvent;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.databinding.ActivityMainBinding;
 import com.ivollo.familychat.friend.FriendAddActivity;
+import com.ivollo.familychat.friend.FriendListAdapter;
 import com.ivollo.familychat.login.LoginActivity;
 import com.ivollo.familychat.navigation.NavigateToLoginEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends BindingActivity {
-
-    /**
-     * 基类要求重载，返回ACTIVITY的布局XML id
-     * 基类会调用数据绑定相关逻辑，将其设置为视图，并生成ViewDataBinding类
-     */
-    @Override
-    protected int getLayoutResId() {
-        return R.layout.activity_main;
-    }
-
     /**
      * 被标记为@Inject的变量，会在执行component.inject(this)的时候自动被注入
      */
@@ -38,6 +36,20 @@ public class MainActivity extends BindingActivity {
 
     @Inject
     Navigator navigator;
+
+    /**
+     * 基类要求重载，返回ACTIVITY的布局XML id
+     * 基类会调用数据绑定相关逻辑，将其设置为视图，并生成ViewDataBinding类
+     */
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_main;
+    }
+
+    @Bind(R.id.recyclerView)
+    carbon.widget.RecyclerView recyclerView;
+
+    private FriendListAdapter friendListAdapter;
 
     /**
      * 基类在使用getLayoutResId()返回的xml id进行数据绑定设置后，会将binding对象传入
@@ -56,6 +68,11 @@ public class MainActivity extends BindingActivity {
         ((ActivityMainBinding) binding).setFriendVM(friendVM);
         ((ActivityMainBinding) binding).setNavigator(navigator);
 
+        ButterKnife.bind(this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        friendListAdapter = new FriendListAdapter();
+        recyclerView.setAdapter(friendListAdapter);
+
         EventBus.getDefault().register(this);
     }
 
@@ -63,6 +80,11 @@ public class MainActivity extends BindingActivity {
     protected void onDestroy() {
         EventBus.getDefault().unregister(this);
         super.onDestroy();
+    }
+
+    @Subscribe
+    public void onFriendListDataResult(ArrayList<Friend> friends){
+        friendListAdapter.replaceList(friends);
     }
 
     @Subscribe
