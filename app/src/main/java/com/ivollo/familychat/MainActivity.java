@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.ivollo.chatcore.bean.Friend;
 import com.ivollo.chatcore.binding.FriendVM;
+import com.ivollo.chatcore.event.FriendListRefreshEvent;
 import com.ivollo.chatcore.event.NavigatoFriendAddEvent;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.databinding.ActivityMainBinding;
@@ -73,6 +74,9 @@ public class MainActivity extends BindingActivity {
         recyclerView.setAdapter(friendListAdapter);
 
         EventBus.getDefault().register(this);
+
+        //调用vm层的好友数据加载方法
+        friendVM.onFriendListLoad(null);
     }
 
     @Override
@@ -82,8 +86,14 @@ public class MainActivity extends BindingActivity {
     }
 
     @Subscribe
-    public void onFriendListDataResult(ArrayList<Friend> friends){
+    public void onFriendListLoaded(ArrayList<Friend> friends){
         friendListAdapter.replaceList(friends);
+    }
+
+    @Subscribe
+    public void onFriendListRefresh(FriendListRefreshEvent event){
+        //好友数据有变化时，vm层通知到UI层刷新好友列表
+        friendVM.onFriendListLoad(null);
     }
 
     @Subscribe
