@@ -1,11 +1,11 @@
 package com.ivollo.familychat.login;
 
-import android.content.Context;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.ivollo.chatcore.binding.ChatVM;
 import com.ivollo.commons.account.AccountApi;
 import com.ivollo.commons.api.ApiCallback;
 import com.ivollo.commons.api.NODATA;
