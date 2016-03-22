@@ -2,7 +2,6 @@ package com.ivollo.familychat.di;
 
 import android.app.Application;
 
-import com.easemob.chat.EMChat;
 import com.ivollo.commons.account.AccountApi;
 import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.familychat.MainVM;
@@ -27,13 +26,12 @@ public class ApplicationModule {
 
     public ApplicationModule(Application application) {
         this.application = application;
-        EMChat.getInstance().init(application);
     }
 
     @Provides
     @Singleton
-    EMChat providesEMChat() {
-        return EMChat.getInstance();
+    LoginVM loginVM(OAuth2 oAuth2, AccountApi accountApi) {
+        return new LoginVM(oAuth2, accountApi);
     }
 
     @Provides
@@ -46,11 +44,5 @@ public class ApplicationModule {
     @Singleton
     Navigator navigator() {
         return new Navigator();
-    }
-
-    @Provides
-    @Singleton
-    LoginVM loginVM(OAuth2 oAuth2, AccountApi accountApi) {
-        return new LoginVM(oAuth2, accountApi);
     }
 }

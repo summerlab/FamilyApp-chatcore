@@ -1,5 +1,6 @@
 package com.ivollo.familychat.login;
 
+import android.content.Context;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.text.TextUtils;
@@ -40,12 +41,17 @@ public class LoginVM {
     }
 
     public void checkOAuthStatus() {
-        btnEnabled.set(false);
         if (!TextUtils.isEmpty(oAuth2.accessToken) && !TextUtils.isEmpty(oAuth2.refreshToken)) {
-            EventBus.getDefault().post(new OAuth2TokenUpdatedEvent(oAuth2.accessToken, oAuth2.refreshToken, oAuth2.expireTime));
+            EventBus.getDefault().post(new OAuth2TokenUpdatedEvent(oAuth2.accessToken, oAuth2.refreshToken, oAuth2.expireTime, null));
+            btnEnabled.set(false);
+        }else{
+            btnEnabled.set(true);
         }
     }
 
+    /**
+     * 点击按钮触发用户登录事件
+     */
     public void login(View v) {
         if (TextUtils.isEmpty(username.get())) {
             EventBus.getDefault().post(new OAuth2TokenFailureEvent("请输入手机号码"));
@@ -60,6 +66,9 @@ public class LoginVM {
         oAuth2.login(username.get(), password.get());
     }
 
+    /**
+     * 点击按钮触发用户注册事件
+     */
     public void register(View v) {
         if (TextUtils.isEmpty(username.get())) {
             EventBus.getDefault().post(new OAuth2TokenFailureEvent("请输入手机号码"));

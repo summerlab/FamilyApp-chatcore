@@ -4,6 +4,7 @@ import com.ivollo.chatcore.di.ChatModule;
 import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.commons.di.CommonModule;
 import com.ivollo.familychat.MainActivity;
+import com.ivollo.familychat.conversation.ConversationActivity;
 import com.ivollo.familychat.friend.FriendInviteActivity;
 import com.ivollo.familychat.login.LoginActivity;
 import com.ivollo.timescore.di.TimesModule;
@@ -28,5 +29,7 @@ public interface ApplicationComponent {
     void inject(LoginActivity activity);
 
     void inject(FriendInviteActivity activity);
+
+    void inject(ConversationActivity activity);
 }
 
