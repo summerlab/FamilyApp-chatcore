@@ -6,7 +6,7 @@ import com.ivollo.chatcore.binding.FriendVM;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.R;
 import com.ivollo.familychat.TheApplication;
-import com.ivollo.familychat.databinding.ActivityFriendAddBinding;
+import com.ivollo.familychat.databinding.ActivityFriendInviteBinding;
 
 import javax.inject.Inject;
 
@@ -16,13 +16,13 @@ import javax.inject.Inject;
  * Author: 黄斐
  * Created on 2016/3/18
  */
-public class FriendAddActivity extends BindingActivity {
+public class FriendInviteActivity extends BindingActivity {
     @Inject
     FriendVM friendVM;
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.activity_friend_add;
+        return R.layout.activity_friend_invite;
     }
 
     @Override
@@ -30,6 +30,6 @@ public class FriendAddActivity extends BindingActivity {
         //dagger2 注入@inject 标注的成员
         TheApplication.getApplicationComponent().inject(this);
         //data binding
-        ((ActivityFriendAddBinding)binding).setVm(friendVM);
+        ((ActivityFriendInviteBinding)binding).setVm(friendVM);
     }
 }

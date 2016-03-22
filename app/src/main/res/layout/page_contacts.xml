@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{vm.onFriendAddNavigate}"
-            android:text="@string/friend_add"/>
+            android:text="@string/friend_invite"/>
 
         <carbon.widget.Button
             android:layout_width="match_parent"

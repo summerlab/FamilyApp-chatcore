@@ -23,7 +23,7 @@
 
             <carbon.widget.TextView
                 style="@style/Text.Inverse"
-                android:text="@string/friend_add"/>
+                android:text="@string/friend_invite"/>
 
         </carbon.widget.FrameLayout>
 

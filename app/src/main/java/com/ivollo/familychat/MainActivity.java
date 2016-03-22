@@ -9,9 +9,8 @@ import com.ivollo.chatcore.binding.FriendVM;
 import com.ivollo.chatcore.event.NavigatoFriendAddEvent;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.databinding.ActivityMainBinding;
-import com.ivollo.familychat.friend.FriendAddActivity;
+import com.ivollo.familychat.friend.FriendInviteActivity;
 import com.ivollo.familychat.friend.FriendListAdapter;
-import com.ivollo.familychat.login.LoginActivity;
 import com.ivollo.familychat.navigation.NavigateToLoginEvent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -94,6 +93,6 @@ public class MainActivity extends BindingActivity {
 
     @Subscribe
     public void navigateToFriendAdd(NavigatoFriendAddEvent event) {
-        startActivity(new Intent(this, FriendAddActivity.class));
+        startActivity(new Intent(this, FriendInviteActivity.class));
     }
 }
