@@ -3,7 +3,6 @@ package com.ivollo.familychat;
 import android.app.Application;
 
 import com.ivollo.chatcore.di.ChatModule;
-import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.commons.di.CommonModule;
 import com.ivollo.familychat.di.ApplicationComponent;
 import com.ivollo.familychat.di.ApplicationModule;
@@ -27,16 +26,19 @@ public class TheApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         CommonModule commonModule = new CommonModule(this, GlobalConstants.SERVER, GlobalConstants.OAUTH_CLIENT_ID,
                 GlobalConstants.OAUTH_CLIENT_SECRET, 200);
-        applicationComponent = DaggerApplicationComponent.builder().commonModule(commonModule)
-                .chatModule(new ChatModule(this))
+
+        ChatModule chatModule = new ChatModule(this);
+        chatModule.initChatCore();
+
+        applicationComponent = DaggerApplicationComponent.builder()
+                .commonModule(commonModule)
+                .chatModule(chatModule)
                 .timesModule(new TimesModule())
                 .applicationModule(new ApplicationModule(this))
                 .build();
-
         //applicationComponent.getOAuth2().login("13588777739", "a12345");
-
-
     }
 }

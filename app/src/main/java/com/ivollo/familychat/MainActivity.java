@@ -2,13 +2,18 @@ package com.ivollo.familychat;
 
 import android.content.Intent;
 import android.databinding.ViewDataBinding;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 
+import com.hyphenate.EMContactListener;
+import com.hyphenate.chat.EMClient;
 import com.ivollo.chatcore.bean.Friend;
+import com.ivollo.chatcore.binding.ChatVM;
 import com.ivollo.chatcore.binding.FriendVM;
-import com.ivollo.chatcore.event.FriendListRefreshEvent;
 import com.ivollo.chatcore.event.FriendInviteNavigateEvent;
 import com.ivollo.commons.base.BindingActivity;
+import com.ivollo.familychat.conversation.ConversationActivity;
 import com.ivollo.familychat.databinding.ActivityMainBinding;
 import com.ivollo.familychat.friend.FriendInviteActivity;
 import com.ivollo.familychat.friend.FriendListAdapter;
@@ -35,6 +40,9 @@ public class MainActivity extends BindingActivity {
     FriendVM friendVM;
 
     @Inject
+    ChatVM chatVM;
+
+    @Inject
     Navigator navigator;
 
     /**
@@ -50,6 +58,7 @@ public class MainActivity extends BindingActivity {
     carbon.widget.RecyclerView recyclerView;
 
     private FriendListAdapter friendListAdapter;
+    private static final String TAG = "MainActivity";
 
     /**
      * 基类在使用getLayoutResId()返回的xml id进行数据绑定设置后，会将binding对象传入
@@ -77,12 +86,15 @@ public class MainActivity extends BindingActivity {
 
         //调用vm层的好友数据加载方法
         friendVM.refreshFriendList();
+
+        chatVM.registerChatMsgListener();
     }
 
     @Override
     protected void onDestroy() {
         EventBus.getDefault().unregister(this);
         super.onDestroy();
+        chatVM.unregisterChatMsgListener();
     }
 
     @Subscribe
@@ -98,5 +110,10 @@ public class MainActivity extends BindingActivity {
     @Subscribe
     public void navigateToFriendInviateActivity(FriendInviteNavigateEvent event) {
         startActivity(new Intent(this, FriendInviteActivity.class));
+    }
+
+    @Subscribe
+    public void  navigateToConversationActivity(Friend friend){
+        ConversationActivity.launch(this, friend);
     }
 }

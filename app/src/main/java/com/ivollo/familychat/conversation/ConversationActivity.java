@@ -1,7 +1,10 @@
 package com.ivollo.familychat.conversation;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.ViewDataBinding;
 
+import com.ivollo.chatcore.bean.Friend;
 import com.ivollo.commons.base.BindingActivity;
 
 /**
@@ -11,6 +14,13 @@ import com.ivollo.commons.base.BindingActivity;
  * Created on 2016/3/22
  */
 public class ConversationActivity extends BindingActivity {
+    public static void launch(Context context, Friend friend) {
+        context.startActivity(new Intent(context, ConversationActivity.class).putExtra(EXTRA_FRIEND, friend));
+    }
+
+    private static final String EXTRA_FRIEND = "friend";
+    private Friend friend;
+
     @Override
     protected int getLayoutResId() {
         return 0;
@@ -18,6 +28,6 @@ public class ConversationActivity extends BindingActivity {
 
     @Override
     protected void initBinding(ViewDataBinding binding) {
-
+        friend = (Friend) getIntent().getSerializableExtra(EXTRA_FRIEND);
     }
 }
