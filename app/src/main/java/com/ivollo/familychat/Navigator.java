@@ -26,6 +26,9 @@ public class Navigator {
             case R.id.navigate_test:
                 page = NavigationPage.TEST;
                 break;
+            case R.id.navigate_times:
+                page = NavigationPage.TIMES;
+                break;
             case R.id.navigate_login:
                 EventBus.getDefault().post(new NavigateToLoginEvent());
                 return;

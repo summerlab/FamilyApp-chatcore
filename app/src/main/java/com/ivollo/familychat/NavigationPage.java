@@ -11,7 +11,8 @@ import android.support.annotation.LayoutRes;
  */
 public enum NavigationPage {
     TEST(R.layout.page_test, "测试页"),
-    CONTACTS(R.layout.page_contacts, "联系人");
+    CONTACTS(R.layout.page_contacts, "联系人"),
+    TIMES(R.layout.page_times, "时光");
 
     int id;
     String name;
