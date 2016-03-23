@@ -1,10 +1,5 @@
 package com.ivollo.familychat.di;
 
-import com.ivollo.commons.di.PerActivity;
-import com.ivollo.familychat.MainVM;
-
-import dagger.Provides;
-
 /**
  * Comments:
  *
