@@ -31,12 +31,15 @@ public class LoginVM {
     public TwoWayBoundString username = new TwoWayBoundString();
     public TwoWayBoundString password = new TwoWayBoundString();
 
+    private static final String TAG = "LoginVM";
     private AccountApi accountApi;
     private OAuth2 oAuth2;
+    private ChatVM chatVM;//第三方聊天服务器需要用户登录
 
-    public LoginVM(OAuth2 oAuth2, AccountApi accountApi) {
+    public LoginVM(OAuth2 oAuth2, AccountApi accountApi, ChatVM chatVM) {
         this.oAuth2 = oAuth2;
         this.accountApi = accountApi;
+        this.chatVM = chatVM;
         EventBus.getDefault().register(this);
     }
 
@@ -44,7 +47,7 @@ public class LoginVM {
         if (!TextUtils.isEmpty(oAuth2.accessToken) && !TextUtils.isEmpty(oAuth2.refreshToken)) {
             EventBus.getDefault().post(new OAuth2TokenUpdatedEvent(oAuth2.accessToken, oAuth2.refreshToken, oAuth2.expireTime, null));
             btnEnabled.set(false);
-        }else{
+        } else {
             btnEnabled.set(true);
         }
     }
@@ -82,6 +85,7 @@ public class LoginVM {
         accountApi.register(username.get(), MD5.encodePassword(password.get()), 1, "", "").enqueue(new ApiCallback<NODATA>() {
             @Override
             public void onApiSuccess(NODATA nodata) {
+                registerProcess(false);
                 //注册成功后需要再执行一次登陆操作获取OAuth授权
                 login(null);
             }
@@ -97,6 +101,9 @@ public class LoginVM {
     @Subscribe
     public void onLoginSuccess(OAuth2TokenUpdatedEvent event) {
         loginInProcess(true);
+        if (null != event && null != event.userInfo) {
+            chatVM.login("" + event.userInfo.id, password.get(), username.get());
+        }
     }
 
     @Subscribe

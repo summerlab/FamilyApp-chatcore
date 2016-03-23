@@ -73,7 +73,7 @@
                 android:layout_marginTop="@dimen/dp_8"
                 android:enabled="@{vm.btnEnabled}"
                 android:minWidth="@dimen/dp_128"
-                android:onClick="@{vm.onFriendAddSubmit}"
+                android:onClick="@{vm.onFriendInviteClick}"
                 android:text="@{vm.btnAddTxt}"
                 app:carbon_cornerRadius="@dimen/dp_8"/>
 

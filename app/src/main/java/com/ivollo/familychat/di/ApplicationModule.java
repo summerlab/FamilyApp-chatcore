@@ -2,6 +2,7 @@ package com.ivollo.familychat.di;
 
 import android.app.Application;
 
+import com.ivollo.chatcore.binding.ChatVM;
 import com.ivollo.commons.account.AccountApi;
 import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.familychat.MainVM;
@@ -30,8 +31,8 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    LoginVM loginVM(OAuth2 oAuth2, AccountApi accountApi) {
-        return new LoginVM(oAuth2, accountApi);
+    LoginVM loginVM(OAuth2 oAuth2, AccountApi accountApi, ChatVM chatVM) {
+        return new LoginVM(oAuth2, accountApi, chatVM);
     }
 
     @Provides
