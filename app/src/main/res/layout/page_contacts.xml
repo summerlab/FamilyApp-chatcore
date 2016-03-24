@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="vm"
-            type="com.ivollo.chatcore.binding.FriendVM"/>
+            type="com.ivollo.chatcore.binding.ChatVM" />
     </data>
 
     <carbon.widget.LinearLayout
@@ -18,23 +19,24 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-        <carbon.widget.Button
+
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{vm.onFriendAddNavigate}"
-            android:text="@string/friend_invite"/>
+            android:text="@string/friend_invite" />
 
-        <carbon.widget.Button
+        <EditText
+            android:hint="请输入聊天内容"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bindEditText="@{vm.textMessage}" />
+
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:onClick="@{vm.onFakeConversationClick}"
-            android:text="好友单聊测试"/>
-
-        <carbon.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+            android:onClick="@{vm.sendTextMessage}"
+            android:text="好友单聊测试" />
     </carbon.widget.LinearLayout>
 </layout>

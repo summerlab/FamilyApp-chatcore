@@ -2,14 +2,13 @@ package com.ivollo.familychat.friend;
 
 import android.databinding.ViewDataBinding;
 
-import com.ivollo.chatcore.binding.FriendVM;
-import com.ivollo.chatcore.event.FriendInviteFinishEvent;
+import com.ivollo.chatcore.binding.ChatVM;
+import com.ivollo.chatcore.event.FriendInviteSentEvent;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.R;
 import com.ivollo.familychat.TheApplication;
 import com.ivollo.familychat.databinding.ActivityFriendInviteBinding;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import javax.inject.Inject;
@@ -22,7 +21,7 @@ import javax.inject.Inject;
  */
 public class FriendInviteActivity extends BindingActivity {
     @Inject
-    FriendVM friendVM;
+    ChatVM chatVM;
 
     @Override
     protected int getLayoutResId() {
@@ -34,19 +33,16 @@ public class FriendInviteActivity extends BindingActivity {
         //dagger2 注入@inject 标注的成员
         TheApplication.getApplicationComponent().inject(this);
         //data binding
-        ((ActivityFriendInviteBinding) binding).setVm(friendVM);
-
-        EventBus.getDefault().register(this);
+        ((ActivityFriendInviteBinding) binding).setVm(chatVM);
     }
 
     @Override
     protected void onDestroy() {
-        EventBus.getDefault().unregister(this);
         super.onDestroy();
     }
 
     @Subscribe
-    public void onFriendInvitationSended(FriendInviteFinishEvent event) {
+    public void onFriendInvitationSent(FriendInviteSentEvent event) {
         //好友邀请发出后，从当前页面退回上一页
         finish();
     }

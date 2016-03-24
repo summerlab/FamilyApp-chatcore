@@ -12,15 +12,15 @@
             type="com.ivollo.familychat.MainVM" />
 
         <variable
-            name="friendVM"
-            type="com.ivollo.chatcore.binding.FriendVM" />
+            name="chatVM"
+            type="com.ivollo.chatcore.binding.ChatVM" />
 
         <variable
             name="navigator"
             type="com.ivollo.familychat.Navigator" />
     </data>
 
-    <carbon.widget.LinearLayout
+    <LinearLayout
         android:id="@id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -48,18 +48,18 @@
 
                 <include
                     layout="@layout/page_contacts"
-                    bind:vm="@{friendVM}" />
+                    bind:vm="@{chatVM}" />
             </FrameLayout>
 
         </FrameLayout>
 
-        <carbon.widget.LinearLayout
+        <LinearLayout
             android:id="@+id/navigator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom">
 
-            <carbon.widget.LinearLayout
+            <LinearLayout
                 android:id="@+id/navigate_contact"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -77,13 +77,13 @@
                     app:materialIcon="message_text_outline"
                     app:materialIconSize="@dimen/dp_16" />
 
-                <carbon.widget.TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="家书" />
-            </carbon.widget.LinearLayout>
+            </LinearLayout>
 
-            <carbon.widget.LinearLayout
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -100,13 +100,13 @@
                     app:materialIcon="message_text_outline"
                     app:materialIconSize="@dimen/dp_16" />
 
-                <carbon.widget.TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="时光" />
-            </carbon.widget.LinearLayout>
+            </LinearLayout>
 
-            <carbon.widget.LinearLayout
+            <LinearLayout
                 android:id="@+id/navigate_test"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -123,13 +123,13 @@
                     app:materialIcon="message_text_outline"
                     app:materialIconSize="@dimen/dp_16" />
 
-                <carbon.widget.TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="家事" />
-            </carbon.widget.LinearLayout>
+            </LinearLayout>
 
-            <carbon.widget.LinearLayout
+            <LinearLayout
                 android:id="@+id/navigate_login"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -146,13 +146,13 @@
                     app:materialIcon="message_text_outline"
                     app:materialIconSize="@dimen/dp_16" />
 
-                <carbon.widget.TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="我" />
-            </carbon.widget.LinearLayout>
-        </carbon.widget.LinearLayout>
-    </carbon.widget.LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 
 </layout>

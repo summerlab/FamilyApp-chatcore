@@ -22,7 +22,11 @@
     <string name="login_check_remember">记住</string>
 
     <!--好友页-->
-    <string name="friend_invite">邀请好友</string>
+    <string name="friend_invite">邀请好友测试</string>
     <string name="friend_load">获取好友列表</string>
     <string name="friend_phone_hint">输入对方的手机号码</string>
+
+    <string name="action_in_process">请稍候…</string>
+    <string name="friend_invite_send">发送邀请</string>
+
 </resources>

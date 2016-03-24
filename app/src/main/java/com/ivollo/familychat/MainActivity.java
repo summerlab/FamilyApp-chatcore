@@ -2,27 +2,22 @@ package com.ivollo.familychat;
 
 import android.content.Intent;
 import android.databinding.ViewDataBinding;
-import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
+import android.widget.Toast;
 
-import com.ivollo.chatcore.bean.Friend;
 import com.ivollo.chatcore.binding.ChatVM;
-import com.ivollo.chatcore.binding.FriendVM;
+import com.ivollo.chatcore.event.ChatToastEvent;
 import com.ivollo.chatcore.event.FriendInviteNavigateEvent;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.databinding.ActivityMainBinding;
+import com.ivollo.familychat.friend.FriendInviteActivity;
 import com.ivollo.familychat.friend.FriendListAdapter;
 import com.ivollo.familychat.login.LoginActivity;
 import com.ivollo.familychat.navigation.NavigateToLoginEvent;
 
 import org.greenrobot.eventbus.Subscribe;
 
-import java.util.ArrayList;
-
 import javax.inject.Inject;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 public class MainActivity extends BindingActivity {
     /**
@@ -31,8 +26,6 @@ public class MainActivity extends BindingActivity {
     @Inject
     MainVM mainVM;
 
-    @Inject
-    FriendVM friendVM;
 
     @Inject
     ChatVM chatVM;
@@ -48,9 +41,6 @@ public class MainActivity extends BindingActivity {
     protected int getLayoutResId() {
         return R.layout.activity_main;
     }
-
-    @Bind(R.id.recyclerView)
-    carbon.widget.RecyclerView recyclerView;
 
     private FriendListAdapter friendListAdapter;
     private static final String TAG = "MainActivity";
@@ -69,23 +59,8 @@ public class MainActivity extends BindingActivity {
 
         //使用被注入的mainVM绑定到xml里data段的vm
         ((ActivityMainBinding) binding).setMainVM(mainVM);
-        ((ActivityMainBinding) binding).setFriendVM(friendVM);
+        ((ActivityMainBinding) binding).setChatVM(chatVM);
         ((ActivityMainBinding) binding).setNavigator(navigator);
-
-        ButterKnife.bind(this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        friendListAdapter = new FriendListAdapter();
-        recyclerView.setAdapter(friendListAdapter);
-
-        //调用vm层的好友数据加载方法
-        //friendVM.refreshFriendList();
-
-        //chatVM.registerChatMsgListener();
-    }
-
-    @Subscribe
-    public void onFriendListLoaded(ArrayList<Friend> friends) {
-        friendListAdapter.replaceList(friends);
     }
 
     @Subscribe
@@ -95,12 +70,15 @@ public class MainActivity extends BindingActivity {
     }
 
     @Subscribe
-    public void navigateToFriendInviateActivity(FriendInviteNavigateEvent event) {
-        //startActivity(new Intent(this, FriendInviteActivity.class));
+    public void navigateToFriendInvite(FriendInviteNavigateEvent event) {
+        startActivity(new Intent(this, FriendInviteActivity.class));
     }
 
     @Subscribe
-    public void navigateToConversationActivity(Friend friend) {
-        //ConversationActivity.launch(this, friend);
+    public void onChatToastEvent(ChatToastEvent event) {
+        int n = R.layout.page_contacts;
+        if (navigator.idCurrentPage.get() != R.id.page_contacts)
+            return;
+        Toast.makeText(MainActivity.this, event.message, Toast.LENGTH_SHORT).show();
     }
 }

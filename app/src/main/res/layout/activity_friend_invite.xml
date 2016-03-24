@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="vm"
-            type="com.ivollo.chatcore.binding.FriendVM"/>
+            type="com.ivollo.chatcore.binding.ChatVM" />
     </data>
 
-    <carbon.widget.FrameLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primary_dark">
 
         <!-- Toolbar -->
-        <carbon.widget.FrameLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.ivollo.familychat.view.ToolbarBackButton style="@style/ToolbarIconButton.Back"/>
+            <com.ivollo.familychat.view.ToolbarBackButton style="@style/ToolbarIconButton.Back" />
 
-            <carbon.widget.TextView
+            <TextView
                 style="@style/Text.Inverse"
-                android:text="@string/friend_invite"/>
+                android:text="@string/friend_invite" />
 
-        </carbon.widget.FrameLayout>
+        </FrameLayout>
 
 
-        <carbon.widget.LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -39,46 +41,46 @@
             app:carbon_cornerRadius="@dimen/dp_4"
             app:carbon_elevation="@dimen/dp_4">
 
-            <carbon.widget.LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <net.steamcrafted.materialiconlib.MaterialIconView
                     style="@style/EditTextIcon"
-                    app:materialIcon="cellphone_android"/>
+                    app:materialIcon="cellphone_android" />
 
-                <carbon.widget.EditText
+                <EditText
                     android:id="@+id/login"
                     style="@style/EditText"
                     android:hint="@string/friend_phone_hint"
                     android:inputType="number"
                     android:maxLength="11"
                     app:bindEditText="@{vm.cellNumberToAdd}"
-                    app:carbon_floatingLabel="true"/>
+                    app:carbon_floatingLabel="true" />
 
-                <net.steamcrafted.materialiconlib.MaterialIconView
-                    android:id="@+id/hide_keyboard"
-                    style="@style/IconButton"
-                    app:materialIcon="keyboard_off"
-                    app:materialIconColor="@color/check_icon_unchecked"/>
+            </LinearLayout>
 
-            </carbon.widget.LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{vm.errorText}"
+                android:visibility="@{vm.errorText.isEmpty ? View.GONE : View.VISIBLE}" />
 
-            <carbon.widget.Button
+            <Button
                 style="@style/Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dp_8"
-                android:enabled="@{vm.btnEnabled}"
+                android:enabled="@{vm.inviteInProcess}"
                 android:minWidth="@dimen/dp_128"
-                android:onClick="@{vm.onFriendInviteClick}"
-                android:text="@{vm.btnAddTxt}"
-                app:carbon_cornerRadius="@dimen/dp_8"/>
+                android:onClick="@{vm.invite}"
+                android:text="@{vm.inviteInProcess ? @string/action_in_process : @string/friend_invite_send }"
+                app:carbon_cornerRadius="@dimen/dp_8" />
 
-        </carbon.widget.LinearLayout>
+        </LinearLayout>
 
-        <include layout="@layout/company_footer"/>
-    </carbon.widget.FrameLayout>
+        <include layout="@layout/company_footer" />
+    </FrameLayout>
 </layout>

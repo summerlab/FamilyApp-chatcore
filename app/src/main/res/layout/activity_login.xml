@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="loginVM"
-            type="com.ivollo.familychat.login.LoginVM"/>
+            type="com.ivollo.familychat.login.LoginVM" />
     </data>
 
-    <carbon.widget.FrameLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primary_dark"
         android:orientation="vertical">
 
         <!-- Toolbar -->
-        <carbon.widget.FrameLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <!--<com.ivollo.familychat.view.ToolbarBackButton style="@style/ToolbarIconButton.Back" />-->
 
-            <carbon.widget.TextView
+            <TextView
                 style="@style/Text.Inverse"
-                android:text="用户登录"/>
+                android:text="用户登录" />
 
-        </carbon.widget.FrameLayout>
+        </FrameLayout>
 
 
-        <carbon.widget.ScrollView
+        <ScrollView
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:layout_marginLeft="@dimen/dp_16"
             android:layout_marginRight="@dimen/dp_16">
 
-            <carbon.widget.LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -47,59 +47,59 @@
                 app:carbon_cornerRadius="@dimen/dp_4"
                 app:carbon_elevation="@dimen/dp_4">
 
-                <carbon.widget.LinearLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <net.steamcrafted.materialiconlib.MaterialIconView
                         style="@style/EditTextIcon"
-                        app:materialIcon="cellphone_android"/>
+                        app:materialIcon="cellphone_android" />
 
-                    <carbon.widget.EditText
+                    <EditText
                         android:id="@+id/login"
                         style="@style/EditText"
                         android:hint="@string/login_hint_cellphone"
                         android:inputType="number"
                         android:maxLength="11"
                         app:bindEditText="@{loginVM.username}"
-                        app:carbon_floatingLabel="true"/>
+                        app:carbon_floatingLabel="true" />
 
                     <net.steamcrafted.materialiconlib.MaterialIconView
                         android:id="@+id/hide_keyboard"
                         style="@style/IconButton"
                         app:materialIcon="keyboard_off"
-                        app:materialIconColor="@color/check_icon_unchecked"/>
+                        app:materialIconColor="@color/check_icon_unchecked" />
 
-                </carbon.widget.LinearLayout>
+                </LinearLayout>
 
-                <carbon.widget.LinearLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <net.steamcrafted.materialiconlib.MaterialIconView
                         style="@style/EditTextIcon"
-                        app:materialIcon="key"/>
+                        app:materialIcon="key" />
 
-                    <carbon.widget.EditText
+                    <EditText
                         android:id="@+id/password"
                         style="@style/EditText"
                         android:hint="@string/login_hint_password"
                         android:inputType="textPassword"
                         android:maxLength="20"
                         app:bindEditText="@{loginVM.password}"
-                        app:carbon_floatingLabel="true"/>
+                        app:carbon_floatingLabel="true" />
 
                     <net.steamcrafted.materialiconlib.MaterialIconView
                         android:id="@+id/check_password_visible"
                         style="@style/IconButton"
                         android:layout_height="match_parent"
                         app:materialIcon="eye"
-                        app:materialIconColor="@color/check_icon_unchecked"/>
-                </carbon.widget.LinearLayout>
+                        app:materialIconColor="@color/check_icon_unchecked" />
+                </LinearLayout>
 
-                <carbon.widget.Button
+                <Button
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -109,9 +109,9 @@
                     android:minWidth="@dimen/dp_128"
                     android:onClick="@{loginVM.login}"
                     android:text="@{loginVM.loginBtnText}"
-                    app:carbon_cornerRadius="@dimen/dp_8"/>
+                    app:carbon_cornerRadius="@dimen/dp_8" />
 
-                <carbon.widget.Button
+                <Button
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -121,40 +121,40 @@
                     android:minWidth="@dimen/dp_128"
                     android:onClick="@{loginVM.register}"
                     android:text="@{loginVM.registerBtnText}"
-                    app:carbon_cornerRadius="@dimen/dp_8"/>
+                    app:carbon_cornerRadius="@dimen/dp_8" />
 
-                <carbon.widget.LinearLayout
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
                     android:orientation="horizontal"
                     app:carbon_cornerRadius="@dimen/dp_8">
 
-                    <carbon.widget.Button
+                    <Button
                         android:id="@+id/switch_retrieve"
                         style="@style/Button.Flat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/login_action_retrieve"
-                        android:textSize="@dimen/dp_12"/>
+                        android:textSize="@dimen/dp_12" />
 
-                    <!--<carbon.widget.TextView
+                    <!--<TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="|"
                         android:textSize="@dimen/dp_12"/>
 
-                    <carbon.widget.Button
+                    <Button
                         android:id="@+id/switch_register"
                         style="@style/Button.Flat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/login_action_register"
                         android:textSize="@dimen/dp_12"/>-->
-                </carbon.widget.LinearLayout>
-            </carbon.widget.LinearLayout>
-        </carbon.widget.ScrollView>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
 
-        <include layout="@layout/company_footer"/>
-    </carbon.widget.FrameLayout>
+        <include layout="@layout/company_footer" />
+    </FrameLayout>
 </layout>
