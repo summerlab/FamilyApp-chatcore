@@ -13,16 +13,6 @@
     </style>
 
 
-    <style name="Icon">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:gravity">center</item>
-        <item name="materialIconColor">@color/icons</item>
-        <item name="android:scaleType">center</item>
-        <item name="materialIconSize">@dimen/icon_normal</item>
-    </style>
-
     <style name="IconButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -31,6 +21,16 @@
         <item name="android:scaleType">center</item>
         <item name="android:padding">@dimen/icon_padding</item>
         <item name="materialIconSize">@dimen/icon_size</item>
+    </style>
+
+    <style name="Icon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="materialIconColor">@color/icons</item>
+        <item name="android:scaleType">center</item>
+        <item name="materialIconSize">@dimen/icon_normal</item>
     </style>
 
     <style name="Icon.Accent">
@@ -44,6 +44,7 @@
     <style name="Icon.Inverse">
         <item name="materialIconColor">@color/inverse_text</item>
     </style>
+
     <style name="EditTextIcon">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -70,6 +71,7 @@
         <item name="android:background">@drawable/button_background</item>
         <item name="carbon_cornerRadius">@dimen/dp_4</item>
     </style>
+
     <style name="Button.Flat">
         <item name="carbon_elevation">@dimen/carbon_elevationFlat</item>
         <item name="android:background">@null</item>

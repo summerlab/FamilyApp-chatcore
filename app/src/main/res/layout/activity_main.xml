@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="mainVM"
             type="com.ivollo.familychat.MainVM" />
@@ -32,7 +34,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="@{navigator.idCurrentPage == @layout/page_test}">
+                android:visibility="@{navigator.idCurrentPage == @layout/page_test ? View.VISIBLE : View.GONE}">
 
                 <include
                     layout="@layout/page_test"
@@ -42,12 +44,13 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="@{navigator.idCurrentPage == @layout/page_contacts}">
+                android:visibility="@{navigator.idCurrentPage == @layout/page_contacts ? View.VISIBLE : View.GONE}">
 
                 <include
                     layout="@layout/page_contacts"
                     bind:vm="@{friendVM}" />
             </FrameLayout>
+
         </FrameLayout>
 
         <carbon.widget.LinearLayout
@@ -81,7 +84,6 @@
             </carbon.widget.LinearLayout>
 
             <carbon.widget.LinearLayout
-                android:id="@+id/navigate_test"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -105,6 +107,7 @@
             </carbon.widget.LinearLayout>
 
             <carbon.widget.LinearLayout
+                android:id="@+id/navigate_test"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
