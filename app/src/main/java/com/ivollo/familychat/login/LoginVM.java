@@ -25,7 +25,7 @@ import org.greenrobot.eventbus.Subscribe;
  */
 public class LoginVM {
     public ObservableBoolean loginInProgress = new ObservableBoolean(false);
-    public ObservableField<String> loginBtnText = new ObservableField<>("登 陆");
+    public ObservableField<String> loginBtnText = new ObservableField<>("登 录");
     public ObservableField<String> registerBtnText = new ObservableField<>("注 册");
     public TwoWayBoundString username = new TwoWayBoundString();
     public TwoWayBoundString password = new TwoWayBoundString();
@@ -98,7 +98,7 @@ public class LoginVM {
     }
 
     private void loginInProcess(boolean inProcess) {
-        loginBtnText.set(inProcess ? "登陆中..." : "登陆");
+        loginBtnText.set(inProcess ? "登录中..." : "登 录");
         loginInProgress.set(inProcess);
     }
 
