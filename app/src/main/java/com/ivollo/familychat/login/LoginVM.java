@@ -6,16 +6,20 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.ivollo.commons.account.AccountApi;
-import com.ivollo.commons.api.ApiCallback;
 import com.ivollo.commons.api.NODATA;
 import com.ivollo.commons.api.oauth.OAuth2;
-import com.ivollo.commons.api.oauth.OAuth2LoginSuccessEvent;
-import com.ivollo.commons.api.oauth.OAuth2TokenFailureEvent;
+import com.ivollo.commons.base.ApiCallback;
+import com.ivollo.commons.base.ApiResponse;
 import com.ivollo.commons.binding.TwoWayBoundString;
+import com.ivollo.commons.event.OAuth2TokenFailureEvent;
+import com.ivollo.commons.event.UserLoginResultEvent;
 import com.ivollo.commons.utils.MD5;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Comments:
@@ -44,6 +48,10 @@ public class LoginVM {
      * 点击按钮触发用户登录事件
      */
     public void login(View v) {
+        doLogin();
+    }
+
+    private void doLogin() {
         if (TextUtils.isEmpty(username.get())) {
             EventBus.getDefault().post(new OAuth2TokenFailureEvent("请输入手机号码"));
             return;
@@ -72,28 +80,27 @@ public class LoginVM {
         registerInProcess(true);
         accountApi.register(username.get(), MD5.encodePassword(password.get()), 1, "", "").enqueue(new ApiCallback<NODATA>() {
             @Override
-            public void onApiSuccess(NODATA nodata) {
+            public void onResponse(Call<ApiResponse<NODATA>> call, Response<ApiResponse<NODATA>> response) {
+                super.onResponse(call, response);
                 registerInProcess(false);
-                //注册成功后需要再执行一次登陆操作获取OAuth授权
-                login(null);
+            }
+
+            @Override
+            public void onApiSuccess(NODATA nodata) {
+                //注册成功后直接调用登录逻辑
+                doLogin();
             }
 
             @Override
             public void onApiFailure(int errorCode, String errorMessage) {
-                registerInProcess(false);
                 EventBus.getDefault().post(new OAuth2TokenFailureEvent(errorMessage));
             }
         });
     }
 
-    @Subscribe
-    public void onLoginSuccess(OAuth2LoginSuccessEvent event) {
-        loginInProcess(true);
-        //chatVM.login(String.valueOf(event.userInfo.id), password.get(), event.userInfo.nickname);
-    }
 
     @Subscribe
-    public void onLoginFailure(OAuth2TokenFailureEvent event) {
+    public void onLoginResult(UserLoginResultEvent event) {
         loginInProcess(false);
     }
 

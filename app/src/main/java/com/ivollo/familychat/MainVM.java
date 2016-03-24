@@ -7,8 +7,8 @@ import android.databinding.ObservableLong;
 import android.view.View;
 
 import com.ivollo.commons.api.oauth.OAuth2;
-import com.ivollo.commons.api.oauth.OAuth2TokenFailureEvent;
-import com.ivollo.commons.api.oauth.OAuth2TokenUpdatedEvent;
+import com.ivollo.commons.event.OAuth2TokenFailureEvent;
+import com.ivollo.commons.event.OAuth2TokenUpdatedEvent;
 import com.ivollo.commons.utils.MD5;
 
 import org.greenrobot.eventbus.EventBus;
