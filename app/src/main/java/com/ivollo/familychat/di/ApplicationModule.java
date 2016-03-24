@@ -31,8 +31,8 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    LoginVM loginVM(OAuth2 oAuth2, AccountApi accountApi, ChatVM chatVM) {
-        return new LoginVM(oAuth2, accountApi, chatVM);
+    LoginVM loginVM(OAuth2 oAuth2, AccountApi accountApi) {
+        return new LoginVM(oAuth2, accountApi);
     }
 
     @Provides

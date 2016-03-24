@@ -3,7 +3,7 @@ package com.ivollo.familychat.friend;
 import android.databinding.ViewDataBinding;
 
 import com.ivollo.chatcore.binding.FriendVM;
-import com.ivollo.chatcore.event.AcitvityFinishEvent;
+import com.ivollo.chatcore.event.FriendInviteFinishEvent;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.R;
 import com.ivollo.familychat.TheApplication;
@@ -46,7 +46,7 @@ public class FriendInviteActivity extends BindingActivity {
     }
 
     @Subscribe
-    public void onFriendInvitationSended(AcitvityFinishEvent event) {
+    public void onFriendInvitationSended(FriendInviteFinishEvent event) {
         //好友邀请发出后，从当前页面退回上一页
         finish();
     }

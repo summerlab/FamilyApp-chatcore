@@ -5,13 +5,12 @@ import android.databinding.ObservableField;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.ivollo.chatcore.binding.ChatVM;
 import com.ivollo.commons.account.AccountApi;
 import com.ivollo.commons.api.ApiCallback;
 import com.ivollo.commons.api.NODATA;
 import com.ivollo.commons.api.oauth.OAuth2;
+import com.ivollo.commons.api.oauth.OAuth2LoginSuccessEvent;
 import com.ivollo.commons.api.oauth.OAuth2TokenFailureEvent;
-import com.ivollo.commons.api.oauth.OAuth2TokenUpdatedEvent;
 import com.ivollo.commons.binding.TwoWayBoundString;
 import com.ivollo.commons.utils.MD5;
 
@@ -25,7 +24,7 @@ import org.greenrobot.eventbus.Subscribe;
  *         Created on 2016/3/18 10:03
  */
 public class LoginVM {
-    public ObservableBoolean btnEnabled = new ObservableBoolean(true);
+    public ObservableBoolean loginInProgress = new ObservableBoolean(false);
     public ObservableField<String> loginBtnText = new ObservableField<>("登 陆");
     public ObservableField<String> registerBtnText = new ObservableField<>("注 册");
     public TwoWayBoundString username = new TwoWayBoundString();
@@ -34,22 +33,11 @@ public class LoginVM {
     private static final String TAG = "LoginVM";
     private AccountApi accountApi;
     private OAuth2 oAuth2;
-    private ChatVM chatVM;//第三方聊天服务器需要用户登录
 
-    public LoginVM(OAuth2 oAuth2, AccountApi accountApi, ChatVM chatVM) {
+    public LoginVM(OAuth2 oAuth2, AccountApi accountApi) {
         this.oAuth2 = oAuth2;
         this.accountApi = accountApi;
-        this.chatVM = chatVM;
         EventBus.getDefault().register(this);
-    }
-
-    public void checkOAuthStatus() {
-        if (!TextUtils.isEmpty(oAuth2.accessToken) && !TextUtils.isEmpty(oAuth2.refreshToken)) {
-            EventBus.getDefault().post(new OAuth2TokenUpdatedEvent(oAuth2.accessToken, oAuth2.refreshToken, oAuth2.expireTime, null));
-            btnEnabled.set(false);
-        } else {
-            btnEnabled.set(true);
-        }
     }
 
     /**
@@ -81,29 +69,27 @@ public class LoginVM {
             return;
         }
 
-        registerProcess(true);
+        registerInProcess(true);
         accountApi.register(username.get(), MD5.encodePassword(password.get()), 1, "", "").enqueue(new ApiCallback<NODATA>() {
             @Override
             public void onApiSuccess(NODATA nodata) {
-                registerProcess(false);
+                registerInProcess(false);
                 //注册成功后需要再执行一次登陆操作获取OAuth授权
                 login(null);
             }
 
             @Override
             public void onApiFailure(int errorCode, String errorMessage) {
-                registerProcess(false);
+                registerInProcess(false);
                 EventBus.getDefault().post(new OAuth2TokenFailureEvent(errorMessage));
             }
         });
     }
 
     @Subscribe
-    public void onLoginSuccess(OAuth2TokenUpdatedEvent event) {
+    public void onLoginSuccess(OAuth2LoginSuccessEvent event) {
         loginInProcess(true);
-        if (null != event && null != event.userInfo) {
-            chatVM.login("" + event.userInfo.id, password.get(), username.get());
-        }
+        //chatVM.login(String.valueOf(event.userInfo.id), password.get(), event.userInfo.nickname);
     }
 
     @Subscribe
@@ -113,11 +99,11 @@ public class LoginVM {
 
     private void loginInProcess(boolean inProcess) {
         loginBtnText.set(inProcess ? "登陆中..." : "登陆");
-        btnEnabled.set(!inProcess);
+        loginInProgress.set(inProcess);
     }
 
-    private void registerProcess(boolean inProcess) {
+    private void registerInProcess(boolean inProcess) {
         registerBtnText.set(inProcess ? "注册中..." : "注 册");
-        btnEnabled.set(!inProcess);
+        loginInProgress.set(inProcess);
     }
 }

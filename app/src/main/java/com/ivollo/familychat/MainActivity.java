@@ -2,24 +2,19 @@ package com.ivollo.familychat;
 
 import android.content.Intent;
 import android.databinding.ViewDataBinding;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
-import com.hyphenate.EMContactListener;
-import com.hyphenate.chat.EMClient;
 import com.ivollo.chatcore.bean.Friend;
 import com.ivollo.chatcore.binding.ChatVM;
 import com.ivollo.chatcore.binding.FriendVM;
 import com.ivollo.chatcore.event.FriendInviteNavigateEvent;
 import com.ivollo.commons.base.BindingActivity;
-import com.ivollo.familychat.conversation.ConversationActivity;
 import com.ivollo.familychat.databinding.ActivityMainBinding;
-import com.ivollo.familychat.friend.FriendInviteActivity;
 import com.ivollo.familychat.friend.FriendListAdapter;
+import com.ivollo.familychat.login.LoginActivity;
 import com.ivollo.familychat.navigation.NavigateToLoginEvent;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
@@ -82,38 +77,30 @@ public class MainActivity extends BindingActivity {
         friendListAdapter = new FriendListAdapter();
         recyclerView.setAdapter(friendListAdapter);
 
-        EventBus.getDefault().register(this);
-
         //调用vm层的好友数据加载方法
-        friendVM.refreshFriendList();
+        //friendVM.refreshFriendList();
 
-        chatVM.registerChatMsgListener();
-    }
-
-    @Override
-    protected void onDestroy() {
-        EventBus.getDefault().unregister(this);
-        super.onDestroy();
-        chatVM.unregisterChatMsgListener();
+        //chatVM.registerChatMsgListener();
     }
 
     @Subscribe
-    public void onFriendListLoaded(ArrayList<Friend> friends){
+    public void onFriendListLoaded(ArrayList<Friend> friends) {
         friendListAdapter.replaceList(friends);
     }
 
     @Subscribe
     public void navigateToLoginActivity(NavigateToLoginEvent event) {
-//        startActivity(new Intent(this, LoginActivity.class));
+        Log.i(TAG, "NAVIGATING TO LOGIN");
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
     @Subscribe
     public void navigateToFriendInviateActivity(FriendInviteNavigateEvent event) {
-        startActivity(new Intent(this, FriendInviteActivity.class));
+        //startActivity(new Intent(this, FriendInviteActivity.class));
     }
 
     @Subscribe
-    public void  navigateToConversationActivity(Friend friend){
-        ConversationActivity.launch(this, friend);
+    public void navigateToConversationActivity(Friend friend) {
+        //ConversationActivity.launch(this, friend);
     }
 }

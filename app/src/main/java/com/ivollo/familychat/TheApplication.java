@@ -30,12 +30,9 @@ public class TheApplication extends Application {
         CommonModule commonModule = new CommonModule(this, GlobalConstants.SERVER, GlobalConstants.OAUTH_CLIENT_ID,
                 GlobalConstants.OAUTH_CLIENT_SECRET, 200);
 
-        ChatModule chatModule = new ChatModule(this);
-        chatModule.initChatCore();
-
         applicationComponent = DaggerApplicationComponent.builder()
                 .commonModule(commonModule)
-                .chatModule(chatModule)
+                .chatModule(new ChatModule(this))
                 .timesModule(new TimesModule())
                 .applicationModule(new ApplicationModule(this))
                 .build();
