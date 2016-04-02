@@ -4,8 +4,8 @@ import com.ivollo.chatcore.di.ChatModule;
 import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.commons.di.CommonModule;
 import com.ivollo.familychat.MainActivity;
-import com.ivollo.familychat.chat.ContactInvitationActivity;
-import com.ivollo.familychat.chat.ContactOperationActivity;
+import com.ivollo.familychat.chat.contact.ContactInvitationActivity;
+import com.ivollo.familychat.chat.contact.ContactOperationActivity;
 import com.ivollo.familychat.login.LoginActivity;
 import com.ivollo.timescore.di.TimesModule;
 

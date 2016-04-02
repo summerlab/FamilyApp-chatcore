@@ -106,8 +106,8 @@
                     android:layout_marginTop="@dimen/dp_8"
                     android:enabled="@{!loginVM.loginInProgress}"
                     android:minWidth="@dimen/dp_128"
-                    android:onClick="@{loginVM.login}"
-                    android:text="@{loginVM.loginBtnText, default=@string/login_action_sign_in}"
+                    app:onClick="@{loginVM.login}"
+                    android:text="@{loginVM.loginInProgress ? @string/action_in_process : @string/login_action_sign_in, default=@string/login_action_sign_in}"
                     app:carbon_cornerRadius="@dimen/dp_8" />
 
                 <Button
@@ -118,7 +118,7 @@
                     android:layout_marginTop="@dimen/dp_8"
                     android:enabled="@{!loginVM.loginInProgress}"
                     android:minWidth="@dimen/dp_128"
-                    android:onClick="@{loginVM.register}"
+                    app:onClick="@{loginVM.register}"
                     android:text="@{loginVM.registerBtnText, default=@string/login_action_register}"
                     app:carbon_cornerRadius="@dimen/dp_8" />
 

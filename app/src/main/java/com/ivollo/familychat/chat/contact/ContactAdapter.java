@@ -2,8 +2,8 @@ package com.ivollo.familychat.chat.contact;
 
 import android.databinding.ViewDataBinding;
 
-import com.ivollo.chatcore.api.ContactListUpdatedEvent;
-import com.ivollo.chatcore.bean.Contact;
+import com.ivollo.chatcore.contacts.ContactListUpdatedEvent;
+import com.ivollo.chatcore.contacts.Contact;
 import com.ivollo.familychat.R;
 import com.ivollo.familychat.commons.adapter.BindingAdapter;
 import com.ivollo.familychat.databinding.ChatItemContactBinding;

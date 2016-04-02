@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="contact"
-            type="com.ivollo.chatcore.bean.Contact" />
+            type="com.ivollo.chatcore.contacts.Contact" />
     </data>
 
     <carbon.widget.LinearLayout
@@ -49,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/blue_400"
                     android:padding="@dimen/dp_4"
-                    android:text="@{String.valueOf(contact.id), default = ID}" />
+                    android:text="@{contact.id, default = ID}" />
 
                 <carbon.widget.TextView
                     style="@style/Text.Sub.Tiny"
@@ -57,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="end"
                     android:padding="@dimen/dp_4"
-                    android:text="@{contact.recentMessageTime, default=TIMESTAMP}" />
+                    android:text="@{contact.recentMessageTimeText, default=TIMESTAMP}" />
             </carbon.widget.LinearLayout>
 
             <carbon.widget.TextView

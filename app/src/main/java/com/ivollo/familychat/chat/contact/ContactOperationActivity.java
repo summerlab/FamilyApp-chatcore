@@ -1,9 +1,10 @@
-package com.ivollo.familychat.chat;
+package com.ivollo.familychat.chat.contact;
 
 import android.databinding.ViewDataBinding;
 
 import com.ivollo.chatcore.ChatVM;
 import com.ivollo.commons.base.BindingActivity;
+import com.ivollo.familychat.BaseActivity;
 import com.ivollo.familychat.R;
 import com.ivollo.familychat.TheApplication;
 import com.ivollo.familychat.databinding.ActivityContactOperationBinding;
@@ -16,8 +17,9 @@ import javax.inject.Inject;
  *
  * @author yining
  *         Created on 2016/4/1 14:04
+ *
  */
-public class ContactOperationActivity extends BindingActivity {
+public class ContactOperationActivity extends BaseActivity {
     @Inject
     ChatVM chatVM;
 

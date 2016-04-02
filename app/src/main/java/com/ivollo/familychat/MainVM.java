@@ -25,8 +25,6 @@ import org.greenrobot.eventbus.Subscribe;
 public class MainVM {
 
 
-
-
     //被绑定到第二个按钮的文本
     public ObservableField<String> accessToken = new ObservableField<>("--");
     public ObservableField<String> refreshToken = new ObservableField<>("--");
@@ -45,19 +43,15 @@ public class MainVM {
         EventBus.getDefault().register(this);
     }
 
-    public void getToken(View v) {
-        accessToken.set(oAuth2.getAccessToken());
+    public void refresh() {
+        oAuth2.refreshToken();
     }
 
-    public void login(View v) {
-        oAuth2.login("13588777739", MD5.encodePassword("a12345"));
-    }
-
-    public void register(View v) {
+    public void register() {
         oAuth2.register("13588777740", MD5.encodePassword("a12345"), false, "测试", null);
     }
 
-    public void logout(View v) {
+    public void logout() {
         oAuth2.logout();
     }
 

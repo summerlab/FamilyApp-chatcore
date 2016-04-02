@@ -36,7 +36,7 @@ public class TheApplication extends Application {
                 .timesModule(new TimesModule())
                 .applicationModule(new ApplicationModule(this))
                 .build();
-        applicationComponent.getOAuth2().refreshToken();
+        //applicationComponent.getOAuth2().refreshToken();
         //applicationComponent.getOAuth2().login("13588777739", "a12345");
     }
 }

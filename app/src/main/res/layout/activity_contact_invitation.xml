@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -61,22 +62,16 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{vm.errorText}"
-                android:visibility="@{vm.errorText.isEmpty}" />
-
-            <Button
+            <carbon.widget.Button
                 style="@style/Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dp_8"
-                android:enabled="@{vm.inviteInProcess}"
+                android:enabled="@{!vm.inviteInProcess}"
                 android:minWidth="@dimen/dp_128"
-                android:onClick="@{vm.invite}"
-                android:text="@{vm.inviteInProcess ? @string/action_in_process : @string/friend_invite_send }"
+                app:onClick="@{vm.invite}"
+                android:text="@string/contact_invitation_send"
                 app:carbon_cornerRadius="@dimen/dp_8" />
 
         </LinearLayout>

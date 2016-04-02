@@ -1,6 +1,5 @@
 package com.ivollo.familychat;
 
-import android.databinding.ObservableField;
 import android.databinding.ViewDataBinding;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,12 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.ivollo.chatcore.ChatVM;
-import com.ivollo.chatcore.api.ContactListUpdatedEvent;
+import com.ivollo.chatcore.contacts.ContactListUpdatedEvent;
 import com.ivollo.chatcore.event.RefreshContactListEvent;
 import com.ivollo.chatcore.event.ToastEvent;
-import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.chat.contact.ContactAdapter;
-import com.ivollo.familychat.commons.navigation.MainTab;
 import com.ivollo.familychat.databinding.ActivityMainBinding;
 import com.ivollo.familychat.commons.navigation.Navigation;
 
@@ -21,7 +18,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import javax.inject.Inject;
 
-public class MainActivity extends BindingActivity {
+public class MainActivity extends BaseActivity {
     /**
      * 被标记为@Inject的变量，会在执行component.inject(this)的时候自动被注入
      */

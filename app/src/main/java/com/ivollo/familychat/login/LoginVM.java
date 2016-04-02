@@ -47,7 +47,7 @@ public class LoginVM {
     /**
      * 点击按钮触发用户登录事件
      */
-    public void login(View v) {
+    public void login() {
         doLogin();
     }
 
@@ -68,7 +68,7 @@ public class LoginVM {
     /**
      * 点击按钮触发用户注册事件
      */
-    public void register(View v) {
+    public void register() {
         if (TextUtils.isEmpty(username.get())) {
             EventBus.getDefault().post(new OAuth2TokenFailureEvent("请输入手机号码"));
             return;
