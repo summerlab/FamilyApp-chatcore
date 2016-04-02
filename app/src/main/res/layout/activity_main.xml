@@ -6,6 +6,8 @@
 
         <import type="com.ivollo.familychat.commons.navigation.Navigation" />
 
+        <import type="com.ivollo.familychat.commons.navigation.MainTab" />
+
         <import type="android.view.View" />
 
         <variable
@@ -31,7 +33,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="@{Navigation.currentPage.isSame(@layout/page_test)}">
+                android:visibility="@{MainTab.currentTab == MainTab.TEST}">
 
                 <include
                     layout="@layout/page_test"
@@ -42,7 +44,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="@{Navigation.currentPage.isSame(@layout/page_contacts)}">
+                android:visibility="@{MainTab.currentTab == MainTab.CONTACTS}">
 
                 <include
                     layout="@layout/page_contacts"
@@ -54,8 +56,8 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <include
-                layout="@layout/main_navigation_tab" />
+
+            <include layout="@layout/main_navigation_tab" />
         </FrameLayout>
     </LinearLayout>
 

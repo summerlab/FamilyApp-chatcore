@@ -10,6 +10,7 @@ import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.commons.event.OAuth2TokenFailureEvent;
 import com.ivollo.commons.event.OAuth2TokenUpdatedEvent;
 import com.ivollo.commons.utils.MD5;
+import com.ivollo.familychat.commons.navigation.MainTab;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -22,6 +23,8 @@ import org.greenrobot.eventbus.Subscribe;
  *         Created on 2016/3/9 16:28
  */
 public class MainVM {
+
+
 
 
     //被绑定到第二个按钮的文本
@@ -70,9 +73,10 @@ public class MainVM {
         updateFromOAuth2();
     }
 
-    private void updateFromOAuth2(){
+    private void updateFromOAuth2() {
         accessToken.set(oAuth2.accessToken);
         refreshToken.set(oAuth2.refreshToken);
         expireTime.set(oAuth2.expireTime);
     }
+
 }

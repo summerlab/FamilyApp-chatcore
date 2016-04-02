@@ -4,7 +4,10 @@
 
     <data>
 
+        <import type="com.ivollo.familychat.commons.navigation.MainTab" />
+
         <import type="com.ivollo.familychat.commons.navigation.Navigation" />
+
     </data>
 
     <carbon.widget.LinearLayout
@@ -19,13 +22,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@{Navigation.currentPage.get().isSame(Navigation.CONTACTS) ? @color/red500 : @color/transparent}"
             android:clickable="true"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingBottom="@dimen/dp_8"
             android:paddingTop="@dimen/dp_8"
-            app:onClick="@{Navigation.CONTACTS.fire}">
+            app:onClick="@{MainTab.CONTACTS.fire}">
 
             <net.steamcrafted.materialiconlib.MaterialIconView
                 android:layout_width="wrap_content"
@@ -43,13 +45,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@{Navigation.currentPage.get().isSame(Navigation.TIMELINE) ? @color/red500 : @color/transparent}"
             android:clickable="true"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingBottom="@dimen/dp_8"
             android:paddingTop="@dimen/dp_8"
-            app:onClick="@{Navigation.TIMELINE.fire}">
+            app:onClick="@{MainTab.TIMELINE.fire}">
 
             <net.steamcrafted.materialiconlib.MaterialIconView
                 android:layout_width="wrap_content"
@@ -67,12 +68,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@{Navigation.currentPage.get().isSame(Navigation.TEST) ? @color/red500 : @color/transparent}"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingBottom="@dimen/dp_8"
             android:paddingTop="@dimen/dp_8"
-            app:onClick="@{Navigation.TEST.fire}">
+            app:onClick="@{MainTab.TEST.fire}">
 
             <net.steamcrafted.materialiconlib.MaterialIconView
                 android:layout_width="wrap_content"
@@ -90,7 +90,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@{Navigation.currentPage.get().isSame(Navigation.LOGIN) ? @color/red500 : @color/transparent}"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingBottom="@dimen/dp_8"

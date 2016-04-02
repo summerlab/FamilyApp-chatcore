@@ -1,5 +1,6 @@
 package com.ivollo.familychat;
 
+import android.databinding.ObservableField;
 import android.databinding.ViewDataBinding;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import com.ivollo.chatcore.event.RefreshContactListEvent;
 import com.ivollo.chatcore.event.ToastEvent;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.chat.contact.ContactAdapter;
+import com.ivollo.familychat.commons.navigation.MainTab;
 import com.ivollo.familychat.databinding.ActivityMainBinding;
 import com.ivollo.familychat.commons.navigation.Navigation;
 

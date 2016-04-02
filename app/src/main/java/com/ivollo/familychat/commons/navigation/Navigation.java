@@ -6,6 +6,7 @@ import android.databinding.ObservableField;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 
+import com.ivollo.familychat.MainActivity;
 import com.ivollo.familychat.R;
 import com.ivollo.familychat.chat.ContactOperationActivity;
 import com.ivollo.familychat.chat.ContactInvitationActivity;
@@ -23,56 +24,41 @@ import org.greenrobot.eventbus.EventBus;
  *         Created on 2016/4/1 13:31
  */
 public enum Navigation {
+    MAIN(MainActivity.class),
     LOGIN(LoginActivity.class),
-    TIMELINE(R.layout.page_test),//临时
-    CONTACTS(R.layout.page_contacts),
     CONTACT_OPERATION(ContactOperationActivity.class),
-    INVITATION(ContactInvitationActivity.class),
-    TEST(R.layout.page_test);
+    INVITATION(ContactInvitationActivity.class);
 
 
     /**
      * 保存当前导航所在位置
      */
-    public static ObservableField<Navigation> currentPage = new ObservableField<>(Navigation.CONTACTS);
+    //public static ObservableField<Navigation> currentPage = new ObservableField<>(Navigation.MAIN);
+    //public static ObservableField<Navigation> currentActivity = new ObservableField<>(Navigation.MAIN);
 
     /**
      * 判断当前导航位置是否在指定位置(activity， layout page 或者 navigation)
      */
-    public static boolean isAt(Navigation navigation) {
-        return currentPage.get().equals(navigation);
-    }
-
-    public static boolean isAt(Class<Activity> activity) {
-        return currentPage.get().isSame(activity);
-    }
-
-    public static boolean isAt(@LayoutRes int page) {
-        return currentPage.get().isSame(page);
-    }
+//    public static boolean isAt(Navigation navigation) {
+//        return currentPage.get().equals(navigation);
+//    }
+//
+//    public static boolean isAt(Class<Activity> activity) {
+//        return currentPage.get().isSame(activity);
+//    }
 
 
     //导航目标有两种方式，一种是layout page切换，一种是activity切换。
-    private Class targetClass = null;
-    private int targetPage = -1;
+    private Class targetClass;
 
 
-    Navigation(Object idNavigationPage) {
-        if (idNavigationPage instanceof Class) {
-            targetClass = (Class) idNavigationPage;
-        } else {
-            targetPage = (Integer) idNavigationPage;
-        }
+    Navigation(Class idNavigationPage) {
+        targetClass = idNavigationPage;
     }
 
     //发出导航事件
     public void fire() {
         EventBus.getDefault().post(this);
-    }
-
-    //判断当前导航位置是否和指定的页面相同
-    public boolean isSame(@LayoutRes int page) {
-        return targetClass == null && page == targetPage;
     }
 
     //判断当前导航位置是否和指定的Activity相同
@@ -97,7 +83,6 @@ public enum Navigation {
                 activity.startActivityForResult(intent, requestCodeForResult);
             }
         }
-        currentPage.set(this);
     }
 
     public void go(Activity activity, int requestCodeForResult) {
