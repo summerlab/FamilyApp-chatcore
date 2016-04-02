@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.ivollo.familychat.commons.navigation.Navigation" />
+    </data>
+
+    <carbon.widget.LinearLayout
+        android:id="@+id/navigator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/green_50"
+        android:baselineAligned="false">
+
+        <carbon.widget.LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@{Navigation.currentPage.get().isSame(Navigation.CONTACTS) ? @color/red500 : @color/transparent}"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            app:onClick="@{Navigation.CONTACTS.fire}">
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:materialIcon="message_text_outline"
+                app:materialIconSize="@dimen/dp_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="家书" />
+        </carbon.widget.LinearLayout>
+
+        <carbon.widget.LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@{Navigation.currentPage.get().isSame(Navigation.TIMELINE) ? @color/red500 : @color/transparent}"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            app:onClick="@{Navigation.TIMELINE.fire}">
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:materialIcon="message_text_outline"
+                app:materialIconSize="@dimen/dp_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="时光" />
+        </carbon.widget.LinearLayout>
+
+        <carbon.widget.LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@{Navigation.currentPage.get().isSame(Navigation.TEST) ? @color/red500 : @color/transparent}"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            app:onClick="@{Navigation.TEST.fire}">
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:materialIcon="message_text_outline"
+                app:materialIconSize="@dimen/dp_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="家事" />
+        </carbon.widget.LinearLayout>
+
+        <carbon.widget.LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@{Navigation.currentPage.get().isSame(Navigation.LOGIN) ? @color/red500 : @color/transparent}"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            app:onClick="@{Navigation.LOGIN.fire}">
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:materialIcon="message_text_outline"
+                app:materialIconSize="@dimen/dp_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我" />
+        </carbon.widget.LinearLayout>
+    </carbon.widget.LinearLayout>
+</layout>

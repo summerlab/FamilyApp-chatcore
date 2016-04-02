@@ -34,7 +34,9 @@
             android:name="UMENG_CHANNEL"
             android:value="Channel ID" />
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -46,16 +48,19 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
-        <!--好友邀请页-->
         <activity
-            android:name=".friend.FriendInviteActivity"
+            android:name=".chat.ContactInvitationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
-        <!--好友单聊页-->
+
         <activity
-            android:name=".conversation.ConversationActivity"
+            android:name=".chat.conversation.ConversationActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden" />
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".chat.ContactOperationActivity"
+            android:screenOrientation="portrait" />
 
         <!--环信设置start-->
         <!-- 设置环信应用的appkey -->

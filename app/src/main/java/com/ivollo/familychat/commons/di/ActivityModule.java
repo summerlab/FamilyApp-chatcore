@@ -1,4 +1,4 @@
-package com.ivollo.familychat.di;
+package com.ivollo.familychat.commons.di;
 
 /**
  * Comments:

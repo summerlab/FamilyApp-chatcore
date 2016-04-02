@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.ivollo.chatcore.ChatVM" />
+    </data>
+
+    <carbon.widget.LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Toolbar -->
+        <carbon.widget.FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_dark">
+
+            <com.ivollo.familychat.commons.view.ToolbarBackButton style="@style/ToolbarIconButton.Back" />
+
+            <carbon.widget.TextView
+                style="@style/Text.Inverse"
+                android:text="@string/contact_invitation_caption" />
+
+        </carbon.widget.FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_conversation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/red_100" />
+    </carbon.widget.LinearLayout>
+</layout>

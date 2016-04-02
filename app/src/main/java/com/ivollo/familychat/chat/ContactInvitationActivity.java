@@ -1,13 +1,13 @@
-package com.ivollo.familychat.friend;
+package com.ivollo.familychat.chat;
 
 import android.databinding.ViewDataBinding;
 
-import com.ivollo.chatcore.binding.ChatVM;
+import com.ivollo.chatcore.ChatVM;
 import com.ivollo.chatcore.event.FriendInviteSentEvent;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.R;
 import com.ivollo.familychat.TheApplication;
-import com.ivollo.familychat.databinding.ActivityFriendInviteBinding;
+import com.ivollo.familychat.databinding.ActivityContactInvitationBinding;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -19,13 +19,13 @@ import javax.inject.Inject;
  * Author: 黄斐
  * Created on 2016/3/18
  */
-public class FriendInviteActivity extends BindingActivity {
+public class ContactInvitationActivity extends BindingActivity {
     @Inject
     ChatVM chatVM;
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.activity_friend_invite;
+        return R.layout.activity_contact_invitation;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class FriendInviteActivity extends BindingActivity {
         //dagger2 注入@inject 标注的成员
         TheApplication.getApplicationComponent().inject(this);
         //data binding
-        ((ActivityFriendInviteBinding) binding).setVm(chatVM);
+        ((ActivityContactInvitationBinding) binding).setVm(chatVM);
     }
 
     @Override

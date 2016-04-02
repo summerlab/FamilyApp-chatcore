@@ -1,12 +1,12 @@
-package com.ivollo.familychat.di;
+package com.ivollo.familychat.commons.di;
 
 import android.app.Application;
 
-import com.ivollo.chatcore.binding.ChatVM;
-import com.ivollo.commons.account.AccountApi;
+import com.ivollo.commons.api.AccountApi;
 import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.familychat.MainVM;
-import com.ivollo.familychat.Navigator;
+import com.ivollo.familychat.chat.contact.ContactAdapter;
+import com.ivollo.familychat.chat.conversation.MessageAdapter;
 import com.ivollo.familychat.login.LoginVM;
 
 import javax.inject.Singleton;
@@ -43,7 +43,13 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    Navigator navigator() {
-        return new Navigator();
+    ContactAdapter contactAdapter() {
+        return new ContactAdapter();
+    }
+
+    @Provides
+    @Singleton
+    MessageAdapter messageAdapter() {
+        return new MessageAdapter();
     }
 }

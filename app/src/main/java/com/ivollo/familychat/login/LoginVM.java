@@ -5,7 +5,7 @@ import android.databinding.ObservableField;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.ivollo.commons.account.AccountApi;
+import com.ivollo.commons.api.AccountApi;
 import com.ivollo.commons.api.NODATA;
 import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.commons.base.ApiCallback;

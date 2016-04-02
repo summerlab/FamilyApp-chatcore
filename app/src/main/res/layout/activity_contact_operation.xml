@@ -8,7 +8,7 @@
 
         <variable
             name="vm"
-            type="com.ivollo.chatcore.binding.ChatVM" />
+            type="com.ivollo.chatcore.ChatVM" />
     </data>
 
     <FrameLayout
@@ -21,11 +21,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.ivollo.familychat.view.ToolbarBackButton style="@style/ToolbarIconButton.Back" />
+            <com.ivollo.familychat.commons.view.ToolbarBackButton style="@style/ToolbarIconButton.Back" />
 
             <TextView
                 style="@style/Text.Inverse"
-                android:text="@string/friend_invite" />
+                android:text="@string/contact_operation_caption" />
 
         </FrameLayout>
 

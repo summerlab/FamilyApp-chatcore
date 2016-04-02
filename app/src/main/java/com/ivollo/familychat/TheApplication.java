@@ -4,9 +4,9 @@ import android.app.Application;
 
 import com.ivollo.chatcore.di.ChatModule;
 import com.ivollo.commons.di.CommonModule;
-import com.ivollo.familychat.di.ApplicationComponent;
-import com.ivollo.familychat.di.ApplicationModule;
-import com.ivollo.familychat.di.DaggerApplicationComponent;
+import com.ivollo.familychat.commons.di.ApplicationComponent;
+import com.ivollo.familychat.commons.di.ApplicationModule;
+import com.ivollo.familychat.commons.di.DaggerApplicationComponent;
 import com.ivollo.timescore.di.TimesModule;
 
 /**
@@ -36,6 +36,7 @@ public class TheApplication extends Application {
                 .timesModule(new TimesModule())
                 .applicationModule(new ApplicationModule(this))
                 .build();
+        applicationComponent.getOAuth2().refreshToken();
         //applicationComponent.getOAuth2().login("13588777739", "a12345");
     }
 }

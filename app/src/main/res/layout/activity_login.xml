@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!--<com.ivollo.familychat.view.ToolbarBackButton style="@style/ToolbarIconButton.Back" />-->
+            <!--<com.ivollo.familychat.base.view.ToolbarBackButton style="@style/ToolbarIconButton.Back" />-->
 
             <TextView
                 style="@style/Text.Inverse"
@@ -68,6 +68,7 @@
                     <net.steamcrafted.materialiconlib.MaterialIconView
                         android:id="@+id/hide_keyboard"
                         style="@style/IconButton"
+                        android:layout_height="match_parent"
                         app:materialIcon="keyboard_off"
                         app:materialIconColor="@color/check_icon_unchecked" />
 
@@ -94,9 +95,7 @@
                     <net.steamcrafted.materialiconlib.MaterialIconView
                         android:id="@+id/check_password_visible"
                         style="@style/IconButton"
-                        android:layout_height="match_parent"
-                        app:materialIcon="eye"
-                        app:materialIconColor="@color/check_icon_unchecked" />
+                        app:materialIcon="eye" />
                 </LinearLayout>
 
                 <Button
@@ -108,7 +107,7 @@
                     android:enabled="@{!loginVM.loginInProgress}"
                     android:minWidth="@dimen/dp_128"
                     android:onClick="@{loginVM.login}"
-                    android:text="@{loginVM.loginBtnText}"
+                    android:text="@{loginVM.loginBtnText, default=@string/login_action_sign_in}"
                     app:carbon_cornerRadius="@dimen/dp_8" />
 
                 <Button
@@ -120,7 +119,7 @@
                     android:enabled="@{!loginVM.loginInProgress}"
                     android:minWidth="@dimen/dp_128"
                     android:onClick="@{loginVM.register}"
-                    android:text="@{loginVM.registerBtnText}"
+                    android:text="@{loginVM.registerBtnText, default=@string/login_action_register}"
                     app:carbon_cornerRadius="@dimen/dp_8" />
 
                 <LinearLayout

@@ -1,19 +1,19 @@
 package com.ivollo.familychat;
 
-import android.content.Intent;
 import android.databinding.ViewDataBinding;
-import android.util.Log;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import com.ivollo.chatcore.binding.ChatVM;
-import com.ivollo.chatcore.event.ChatToastEvent;
-import com.ivollo.chatcore.event.FriendInviteNavigateEvent;
+import com.ivollo.chatcore.ChatVM;
+import com.ivollo.chatcore.api.ContactListUpdatedEvent;
+import com.ivollo.chatcore.event.RefreshContactListEvent;
+import com.ivollo.chatcore.event.ToastEvent;
 import com.ivollo.commons.base.BindingActivity;
+import com.ivollo.familychat.chat.contact.ContactAdapter;
 import com.ivollo.familychat.databinding.ActivityMainBinding;
-import com.ivollo.familychat.friend.FriendInviteActivity;
-import com.ivollo.familychat.friend.FriendListAdapter;
-import com.ivollo.familychat.login.LoginActivity;
-import com.ivollo.familychat.navigation.NavigateToLoginEvent;
+import com.ivollo.familychat.commons.navigation.Navigation;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -30,8 +30,7 @@ public class MainActivity extends BindingActivity {
     @Inject
     ChatVM chatVM;
 
-    @Inject
-    Navigator navigator;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     /**
      * 基类要求重载，返回ACTIVITY的布局XML id
@@ -42,7 +41,8 @@ public class MainActivity extends BindingActivity {
         return R.layout.activity_main;
     }
 
-    private FriendListAdapter friendListAdapter;
+    @Inject
+    ContactAdapter contactAdapter;
     private static final String TAG = "MainActivity";
 
     /**
@@ -60,25 +60,33 @@ public class MainActivity extends BindingActivity {
         //使用被注入的mainVM绑定到xml里data段的vm
         ((ActivityMainBinding) binding).setMainVM(mainVM);
         ((ActivityMainBinding) binding).setChatVM(chatVM);
-        ((ActivityMainBinding) binding).setNavigator(navigator);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.contacts_recycler);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(contactAdapter);
+
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_contacts);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new RefreshContactListEvent().fire();
+            }
+        });
     }
 
     @Subscribe
-    public void navigateToLoginActivity(NavigateToLoginEvent event) {
-        Log.i(TAG, "NAVIGATING TO LOGIN");
-        startActivity(new Intent(this, LoginActivity.class));
+    public void onNavigation(Navigation navigation) {
+        navigation.go(this);
     }
 
     @Subscribe
-    public void navigateToFriendInvite(FriendInviteNavigateEvent event) {
-        startActivity(new Intent(this, FriendInviteActivity.class));
+    public void onToastEvent(ToastEvent event) {
+        Toast.makeText(this, event.message, Toast.LENGTH_SHORT).show();
     }
 
     @Subscribe
-    public void onChatToastEvent(ChatToastEvent event) {
-        int n = R.layout.page_contacts;
-        if (navigator.idCurrentPage.get() != R.id.page_contacts)
-            return;
-        Toast.makeText(MainActivity.this, event.message, Toast.LENGTH_SHORT).show();
+    public void onContactListUpdated(ContactListUpdatedEvent event) {
+        swipeRefreshLayout.setRefreshing(false);
     }
 }

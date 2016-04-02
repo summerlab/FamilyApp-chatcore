@@ -1,4 +1,4 @@
-package com.ivollo.familychat.view;
+package com.ivollo.familychat.commons.view;
 
 import android.app.Activity;
 import android.content.Context;
