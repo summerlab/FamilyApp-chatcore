@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.ivollo.chatcore.ChatVM;
 import com.ivollo.chatcore.contacts.ContactListUpdatedEvent;
+import com.ivollo.chatcore.conversation.CreateConversationEvent;
 import com.ivollo.chatcore.event.RefreshContactListEvent;
 import com.ivollo.chatcore.event.ToastEvent;
 import com.ivollo.familychat.chat.contact.ContactAdapter;
@@ -88,4 +89,10 @@ public class MainActivity extends BaseActivity {
     public void onContactListUpdated(ContactListUpdatedEvent event) {
         swipeRefreshLayout.setRefreshing(false);
     }
+
+    @Subscribe
+    public void onStartConversation(CreateConversationEvent event) {
+        Navigation.CONVERSATION.fire();
+    }
+
 }

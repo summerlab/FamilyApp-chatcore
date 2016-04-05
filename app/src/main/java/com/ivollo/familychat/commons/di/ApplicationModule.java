@@ -52,4 +52,5 @@ public class ApplicationModule {
     MessageAdapter messageAdapter() {
         return new MessageAdapter();
     }
+
 }

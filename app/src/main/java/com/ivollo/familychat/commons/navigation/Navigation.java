@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import com.ivollo.familychat.MainActivity;
 import com.ivollo.familychat.chat.contact.ContactOperationActivity;
 import com.ivollo.familychat.chat.contact.ContactInvitationActivity;
+import com.ivollo.familychat.chat.conversation.ConversationActivity;
 import com.ivollo.familychat.login.LoginActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -23,6 +24,7 @@ import org.greenrobot.eventbus.EventBus;
 public enum Navigation {
     MAIN(MainActivity.class),
     LOGIN(LoginActivity.class),
+    CONVERSATION(ConversationActivity.class),
     CONTACT_OPERATION(ContactOperationActivity.class),
     INVITATION(ContactInvitationActivity.class);
 

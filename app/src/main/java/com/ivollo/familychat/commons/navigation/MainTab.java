@@ -1,6 +1,7 @@
 package com.ivollo.familychat.commons.navigation;
 
 import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 import android.support.annotation.LayoutRes;
 
 import com.ivollo.familychat.R;
@@ -17,6 +18,9 @@ public enum MainTab {
     TIMELINE(R.layout.page_test),//临时
     TEST(R.layout.page_test),
     SETTINGS(R.layout.page_test);
+
+    ObservableInt bindableInt = new ObservableInt(2);
+
 
     public static ObservableField<MainTab> currentTab = new ObservableField<>(CONTACTS);
     private int idPage;
