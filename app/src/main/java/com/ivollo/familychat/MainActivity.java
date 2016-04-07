@@ -1,13 +1,14 @@
 package com.ivollo.familychat;
 
 import android.databinding.ViewDataBinding;
+import android.support.annotation.MainThread;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.ivollo.chatcore.ChatVM;
-import com.ivollo.chatcore.contacts.ContactListUpdatedEvent;
+import com.ivollo.chatcore.contacts.events.ContactListUpdatedEvent;
 import com.ivollo.chatcore.conversation.CreateConversationEvent;
 import com.ivollo.chatcore.event.RefreshContactListEvent;
 import com.ivollo.chatcore.event.ToastEvent;
@@ -16,6 +17,7 @@ import com.ivollo.familychat.databinding.ActivityMainBinding;
 import com.ivollo.familychat.commons.navigation.Navigation;
 
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import javax.inject.Inject;
 
@@ -75,17 +77,12 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    @Subscribe
-    public void onNavigation(Navigation navigation) {
-        navigation.go(this);
-    }
-
-    @Subscribe
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onToastEvent(ToastEvent event) {
         Toast.makeText(this, event.message, Toast.LENGTH_SHORT).show();
     }
 
-    @Subscribe
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onContactListUpdated(ContactListUpdatedEvent event) {
         swipeRefreshLayout.setRefreshing(false);
     }

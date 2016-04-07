@@ -1,9 +1,13 @@
 package com.ivollo.familychat.chat.contact;
 
 import android.databinding.ViewDataBinding;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.ivollo.chatcore.ChatVM;
 import com.ivollo.chatcore.event.FriendInviteSentEvent;
+import com.ivollo.chatcore.event.RefreshContactListEvent;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.BaseActivity;
 import com.ivollo.familychat.R;
@@ -35,16 +39,7 @@ public class ContactInvitationActivity extends BaseActivity {
         TheApplication.getApplicationComponent().inject(this);
         //data binding
         ((ActivityContactInvitationBinding) binding).setVm(chatVM);
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
 
-    @Subscribe
-    public void onFriendInvitationSent(FriendInviteSentEvent event) {
-        //好友邀请发出后，从当前页面退回上一页
-        finish();
     }
 }

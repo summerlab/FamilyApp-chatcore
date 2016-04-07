@@ -23,7 +23,7 @@
 
             <carbon.widget.TextView
                 style="@style/Text.Inverse"
-                android:text="@string/contact_invitation_caption" />
+                android:text="@{vm.conversationManager.contact.nickname, default = TARGET_NICKNAME}" />
 
         </carbon.widget.FrameLayout>
 

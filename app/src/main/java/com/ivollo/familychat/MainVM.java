@@ -47,14 +47,6 @@ public class MainVM {
         oAuth2.refreshToken();
     }
 
-    public void register() {
-        oAuth2.register("13588777740", MD5.encodePassword("a12345"), false, "测试", null);
-    }
-
-    public void logout() {
-        oAuth2.logout();
-    }
-
     @Subscribe
     public void onOAuthSuccess(OAuth2TokenUpdatedEvent event) {
         accessToken.set(event.accessToken);

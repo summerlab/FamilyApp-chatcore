@@ -27,11 +27,6 @@
                 android:layout_height="wrap_content"
                 app:onClick="@{Navigation.CONTACT_OPERATION.fire}"
                 android:text="联系人" />
-            <carbon.widget.Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:onClick="@{Navigation.INVITATION.fire}"
-                android:text="添加好友" />
         </carbon.widget.LinearLayout>
 
         <android.support.v4.widget.SwipeRefreshLayout

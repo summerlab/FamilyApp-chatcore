@@ -6,6 +6,7 @@ import com.ivollo.commons.api.AccountApi;
 import com.ivollo.commons.api.oauth.OAuth2;
 import com.ivollo.familychat.MainVM;
 import com.ivollo.familychat.chat.contact.ContactAdapter;
+import com.ivollo.familychat.chat.contact.InvitationAdapter;
 import com.ivollo.familychat.chat.conversation.MessageAdapter;
 import com.ivollo.familychat.login.LoginVM;
 
@@ -45,6 +46,12 @@ public class ApplicationModule {
     @Singleton
     ContactAdapter contactAdapter() {
         return new ContactAdapter();
+    }
+
+    @Provides
+    @Singleton
+    InvitationAdapter invitationAdapter() {
+        return new InvitationAdapter();
     }
 
     @Provides

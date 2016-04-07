@@ -5,22 +5,22 @@
     <data>
 
         <import type="android.view.View" />
-
+        <import type="com.ivollo.familychat.commons.navigation.Navigation" />
         <variable
             name="vm"
             type="com.ivollo.chatcore.ChatVM" />
     </data>
 
-    <carbon.widget.FrameLayout
+    <carbon.widget.LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:orientation="vertical">
 
         <!-- Toolbar -->
         <carbon.widget.FrameLayout
-            android:background="@color/primary_dark"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/primary_dark">
 
             <com.ivollo.familychat.commons.view.ToolbarBackButton style="@style/ToolbarIconButton.Back" />
 
@@ -28,20 +28,21 @@
                 style="@style/Text.Inverse"
                 android:text="@string/contact_operation_caption" />
 
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                style="@style/IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                app:materialIcon="plus"
+                app:materialIconColor="@color/inverse_text"
+                app:onClick="@{Navigation.INVITATION.fire}" />
         </carbon.widget.FrameLayout>
 
-
-        <carbon.widget.LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/invitation_recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/dp_16"
-            android:orientation="vertical"
-            android:padding="@dimen/dp_16"
-            app:carbon_cornerRadius="@dimen/dp_4"
-            app:carbon_elevation="@dimen/dp_4">
+            android:layout_height="match_parent" />
 
-        </carbon.widget.LinearLayout>
 
-    </carbon.widget.FrameLayout>
+    </carbon.widget.LinearLayout>
 </layout>
