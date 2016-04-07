@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -26,12 +27,16 @@ import java.util.List;
  * @author yining
  *         Created on 2016/3/31 13:18
  */
-public abstract class EventBasedRecyclerAdapter<DATA, EVENT extends DataSetUpdateEvent<DATA>> extends RecyclerView.Adapter<BindingViewHolder> {
+public abstract class BindingRecyclerAdapter<DATA> extends RecyclerView.Adapter<BindingViewHolder> {
 
     private List<DATA> mList = new ArrayList<>();
 
-    public EventBasedRecyclerAdapter() {
-        EventBus.getDefault().register(this);
+    public BindingRecyclerAdapter() {
+        try {
+            EventBus.getDefault().register(this);
+        }catch (Exception expected){
+            //没有通过事件来通知数据更新
+        }
     }
 
     @Override
@@ -81,8 +86,4 @@ public abstract class EventBasedRecyclerAdapter<DATA, EVENT extends DataSetUpdat
     @LayoutRes
     public abstract int getItemLayoutRes(int viewType);
 
-    @Subscribe
-    public void onDataUpdated(EVENT event) {
-        setData(event.data);
-    }
 }

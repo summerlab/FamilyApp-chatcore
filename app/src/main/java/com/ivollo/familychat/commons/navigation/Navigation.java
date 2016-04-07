@@ -3,6 +3,7 @@ package com.ivollo.familychat.commons.navigation;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.ivollo.familychat.MainActivity;
 import com.ivollo.familychat.chat.contact.ContactOperationActivity;
@@ -15,7 +16,7 @@ import org.greenrobot.eventbus.EventBus;
 /**
  * Copyright (2012-2016) by 杭州随行科技,Inc. All rights reserved
  * Comments:导航控制器
- * <p/>
+ * <p>
  * 首先在这里
  *
  * @author yining
@@ -73,6 +74,10 @@ public enum Navigation {
      * @param requestCodeForResult 使用startActivityForResult时用的requestCode.为null时使用startActivity
      */
     public void go(Activity activity, @Nullable Intent intent, @Nullable Integer requestCodeForResult) {
+        if (targetClass.equals(activity.getClass())) {
+            Log.i("NAVIGATION", "相同activity，不进行跳转");
+            return;
+        }
         if (targetClass != null) {
             if (intent == null)
                 intent = new Intent(activity, targetClass);
@@ -89,6 +94,7 @@ public enum Navigation {
     }
 
     public void go(Activity activity) {
+
         go(activity, null, null);
     }
 
