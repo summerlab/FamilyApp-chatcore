@@ -5,7 +5,7 @@ import android.databinding.ViewDataBinding;
 import com.hyphenate.chat.EMMessage;
 import com.ivollo.chatcore.api.MessagesUpdatedEventSet;
 import com.ivollo.familychat.R;
-import com.ivollo.familychat.commons.adapter.BindingAdapter;
+import com.ivollo.familychat.commons.adapter.EventBasedRecyclerAdapter;
 import com.ivollo.familychat.databinding.ChatItemMessageTextBinding;
 
 /**
@@ -15,7 +15,7 @@ import com.ivollo.familychat.databinding.ChatItemMessageTextBinding;
  * @author yining
  *         Created on 2016/3/30 19:08
  */
-public class MessageAdapter extends BindingAdapter<EMMessage, MessagesUpdatedEventSet> {
+public class MessageAdapter extends EventBasedRecyclerAdapter<EMMessage, MessagesUpdatedEventSet> {
 
     @Override
     public int getItemLayoutRes(int viewType) {

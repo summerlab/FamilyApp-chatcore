@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Copyright (2012-2016) by 杭州随行科技,Inc. All rights reserved
  * Comments:用于RecyclerView的数据适配器基类
- * <p/>
+ * <p>
  * DATA是子元素的类型
  * EVENT是用于更新该适配器的EVENT类型
  * 适配器会自动捕获EVENT类型的事件并将数据更新为EVENT.data
@@ -26,11 +26,11 @@ import java.util.List;
  * @author yining
  *         Created on 2016/3/31 13:18
  */
-public abstract class BindingAdapter<DATA, EVENT extends DataSetUpdateEvent<DATA>> extends RecyclerView.Adapter<BindingViewHolder> {
+public abstract class EventBasedRecyclerAdapter<DATA, EVENT extends DataSetUpdateEvent<DATA>> extends RecyclerView.Adapter<BindingViewHolder> {
 
     private List<DATA> mList = new ArrayList<>();
 
-    public BindingAdapter() {
+    public EventBasedRecyclerAdapter() {
         EventBus.getDefault().register(this);
     }
 
@@ -68,9 +68,8 @@ public abstract class BindingAdapter<DATA, EVENT extends DataSetUpdateEvent<DATA
     }
 
     public void setData(List<DATA> data) {
-        if (data == null) {
-            return;
-        } else if (data.isEmpty()) {
+
+        if (data == null || data.isEmpty()) {
             mList.clear();
         } else {
             mList = data;

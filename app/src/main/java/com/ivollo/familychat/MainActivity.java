@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.ivollo.chatcore.ChatVM;
+import com.ivollo.chatcore.contacts.events.ContactListRefreshApiResultEvent;
 import com.ivollo.chatcore.contacts.events.ContactListUpdatedEvent;
 import com.ivollo.chatcore.conversation.CreateConversationEvent;
 import com.ivollo.chatcore.event.RefreshContactListEvent;
@@ -63,8 +64,9 @@ public class MainActivity extends BaseActivity {
         ((ActivityMainBinding) binding).setMainVM(mainVM);
         ((ActivityMainBinding) binding).setChatVM(chatVM);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.contacts_recycler);
+        contactAdapter.setData(chatVM.contactManager.contacts);
 
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.contacts_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(contactAdapter);
 
@@ -75,6 +77,7 @@ public class MainActivity extends BaseActivity {
                 new RefreshContactListEvent().fire();
             }
         });
+
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -83,8 +86,11 @@ public class MainActivity extends BaseActivity {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onContactListUpdated(ContactListUpdatedEvent event) {
+    public void onContactListUpdated(ContactListRefreshApiResultEvent event) {
         swipeRefreshLayout.setRefreshing(false);
+        if (event.isFailure) {
+            Toast.makeText(this, event.errorMessage, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Subscribe

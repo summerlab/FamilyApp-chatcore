@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -68,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dp_8"
-                android:enabled="@{!vm.inviteInProcess}"
+                android:enabled="@{!vm.contactManager.inviteInProcess}"
                 android:minWidth="@dimen/dp_128"
                 android:text="@string/contact_invitation_send"
                 app:carbon_cornerRadius="@dimen/dp_8"

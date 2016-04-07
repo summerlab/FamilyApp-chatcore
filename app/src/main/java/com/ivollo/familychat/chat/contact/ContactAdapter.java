@@ -5,7 +5,7 @@ import android.databinding.ViewDataBinding;
 import com.ivollo.chatcore.contacts.events.ContactListUpdatedEvent;
 import com.ivollo.chatcore.contacts.entity.Contact;
 import com.ivollo.familychat.R;
-import com.ivollo.familychat.commons.adapter.BindingAdapter;
+import com.ivollo.familychat.commons.adapter.EventBasedRecyclerAdapter;
 import com.ivollo.familychat.databinding.ChatItemContactBinding;
 
 /**
@@ -14,7 +14,7 @@ import com.ivollo.familychat.databinding.ChatItemContactBinding;
  * Author: 依宁
  * Created on 2016/3/18
  */
-public class ContactAdapter extends BindingAdapter<Contact, ContactListUpdatedEvent> {
+public class ContactAdapter extends EventBasedRecyclerAdapter<Contact, ContactListUpdatedEvent> {
     @Override
     public void bindData(ViewDataBinding binding, Contact contact) {
         ((ChatItemContactBinding) binding).setContact(contact);

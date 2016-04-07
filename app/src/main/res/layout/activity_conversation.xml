@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -30,7 +31,26 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_conversation"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/red_100" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green_50"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:bindEditText="@{vm.conversationManager.textToSend}" />
+
+            <carbon.widget.Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="发送"
+                app:onClick="@{vm.conversationManager.sentTextMessage}" />
+        </LinearLayout>
     </carbon.widget.LinearLayout>
 </layout>
