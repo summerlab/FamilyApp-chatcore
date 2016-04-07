@@ -12,8 +12,8 @@
     <carbon.widget.LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/green_50"
         android:orientation="horizontal"
+        android:padding="@dimen/dp_4"
         app:onClick="@{contact.startConversation}">
 
         <ImageView

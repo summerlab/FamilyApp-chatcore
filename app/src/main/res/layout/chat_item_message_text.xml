@@ -8,14 +8,52 @@
             type="com.hyphenate.chat.EMMessage" />
     </data>
 
-    <LinearLayout
+    <carbon.widget.LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dp_8">
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_4">
 
-        <TextView
+        <ImageView
+            android:layout_width="@dimen/dp_32"
+            android:layout_height="@dimen/dp_32"
+            android:layout_gravity="center"
+            android:contentDescription="用户头像"
+            android:src="@drawable/default_avatar" />
+
+        <carbon.widget.LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{message.toString()}" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp_4">
+
+            <carbon.widget.LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <carbon.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue_100"
+                    android:text="@{message.from, default = FROM}"
+                    android:textSize="@dimen/sp_14" />
+
+                <carbon.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/red_100"
+                    android:text="@{message.to, default = TO}"
+                    android:textSize="@dimen/sp_14" />
+            </carbon.widget.LinearLayout>
+
+            <carbon.widget.TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{message.body.toString()}"
+                android:textSize="@dimen/sp_14" />
+        </carbon.widget.LinearLayout>
+
+
+    </carbon.widget.LinearLayout>
 </layout>

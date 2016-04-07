@@ -25,15 +25,14 @@
             <carbon.widget.Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:onClick="@{Navigation.CONTACT_OPERATION.fire}"
-                android:text="联系人" />
+                android:text="联系人"
+                app:onClick="@{Navigation.CONTACT_OPERATION.fire}" />
         </carbon.widget.LinearLayout>
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_contacts"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/dp_8">
+            android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/contacts_recycler"
