@@ -95,7 +95,8 @@
                     <net.steamcrafted.materialiconlib.MaterialIconView
                         android:id="@+id/check_password_visible"
                         style="@style/IconButton"
-                        app:materialIcon="eye" />
+                        app:materialIcon="eye_off"
+                        app:materialIconColor="@color/check_icon_unchecked"/>
                 </carbon.widget.LinearLayout>
 
                 <carbon.widget.Button
