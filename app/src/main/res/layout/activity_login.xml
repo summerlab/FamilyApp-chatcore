@@ -26,6 +26,7 @@
                 style="@style/Text.Inverse"
                 android:text="用户登录" />
 
+            <com.ivollo.familychat.commons.view.ToolbarBackButton style="@style/ToolbarIconButton.Back" />
         </carbon.widget.FrameLayout>
 
 
@@ -96,7 +97,7 @@
                         android:id="@+id/check_password_visible"
                         style="@style/IconButton"
                         app:materialIcon="eye_off"
-                        app:materialIconColor="@color/check_icon_unchecked"/>
+                        app:materialIconColor="@color/check_icon_unchecked" />
                 </carbon.widget.LinearLayout>
 
                 <carbon.widget.Button
