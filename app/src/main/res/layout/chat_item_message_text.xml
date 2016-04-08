@@ -3,6 +3,8 @@
 
     <data>
 
+        <import type="com.ivollo.chatcore.util.ChatUtils" />
+
         <variable
             name="message"
             type="com.hyphenate.chat.EMMessage" />
@@ -42,6 +44,12 @@
                 <carbon.widget.TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text=" >>> "
+                    android:textSize="@dimen/sp_14" />
+
+                <carbon.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@color/red_100"
                     android:text="@{message.to, default = TO}"
                     android:textSize="@dimen/sp_14" />
@@ -50,7 +58,7 @@
             <carbon.widget.TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{message.body.toString()}"
+                android:text="@{ChatUtils.getMessageText(message)}"
                 android:textSize="@dimen/sp_14" />
         </carbon.widget.LinearLayout>
 
