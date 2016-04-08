@@ -5,6 +5,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.ivollo.chatcore.ChatVM;
+import com.ivollo.chatcore.contacts.InvitationManager;
+import com.ivollo.chatcore.contacts.events.ContactListUpdatedEvent;
+import com.ivollo.chatcore.contacts.events.InvitationListUpdatedEvent;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.BaseActivity;
 import com.ivollo.familychat.R;
@@ -26,7 +29,7 @@ import javax.inject.Inject;
  */
 public class ContactOperationActivity extends BaseActivity {
     @Inject
-    ChatVM chatVM;
+    InvitationManager invitationManager;
     @Inject
     InvitationAdapter invitationAdapter;
 
@@ -38,17 +41,14 @@ public class ContactOperationActivity extends BaseActivity {
     @Override
     protected void initBinding(ViewDataBinding binding) {
         TheApplication.getApplicationComponent().inject(this);
-        ((ActivityContactOperationBinding) binding).setVm(chatVM);
+        ((ActivityContactOperationBinding) binding).setInvitationManager(invitationManager);
 
         //初始化已保存的邀请信息
-        invitationAdapter.setData(chatVM.getInvitationManager().getInvitations());
+        invitationAdapter.setData(invitationManager.getInvitations());
 
         //设置RecyclerView
         RecyclerView invitationRecycler = (RecyclerView) findViewById(R.id.invitation_recycler);
         invitationRecycler.setLayoutManager(new LinearLayoutManager(this));
         invitationRecycler.setAdapter(invitationAdapter);
-
     }
-
-
 }

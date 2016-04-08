@@ -30,7 +30,7 @@ public class InvitationAdapter extends BindingRecyclerAdapter<Contact> {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onUpdateList(ContactListUpdatedEvent event) {
+    public void onUpdateList(InvitationListUpdatedEvent event) {
         setData(event.data);
     }
 }

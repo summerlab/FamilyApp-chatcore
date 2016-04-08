@@ -7,8 +7,8 @@
         <import type="android.view.View" />
         <import type="com.ivollo.familychat.commons.navigation.Navigation" />
         <variable
-            name="vm"
-            type="com.ivollo.chatcore.ChatVM" />
+            name="invitationManager"
+            type="com.ivollo.chatcore.contacts.InvitationManager" />
     </data>
 
     <carbon.widget.LinearLayout

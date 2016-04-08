@@ -16,7 +16,7 @@ import org.greenrobot.eventbus.EventBus;
 /**
  * Copyright (2012-2016) by 杭州随行科技,Inc. All rights reserved
  * Comments:导航控制器
- * <p>
+ * <p/>
  * 首先在这里
  *
  * @author yining
@@ -77,6 +77,8 @@ public enum Navigation {
         if (targetClass.equals(activity.getClass())) {
             Log.i("NAVIGATION", "相同activity，不进行跳转");
             return;
+        } else {
+            Log.i("NAVIGATION", String.format("从%s跳转到%s", activity.getClass().getSimpleName(), targetClass.getSimpleName()));
         }
         if (targetClass != null) {
             if (intent == null)

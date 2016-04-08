@@ -9,27 +9,27 @@
             type="com.ivollo.familychat.login.LoginVM" />
     </data>
 
-    <FrameLayout
+    <carbon.widget.FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primary_dark"
         android:orientation="vertical">
 
         <!-- Toolbar -->
-        <FrameLayout
+        <carbon.widget.FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <!--<com.ivollo.familychat.base.view.ToolbarBackButton style="@style/ToolbarIconButton.Back" />-->
 
-            <TextView
+            <carbon.widget.TextView
                 style="@style/Text.Inverse"
                 android:text="用户登录" />
 
-        </FrameLayout>
+        </carbon.widget.FrameLayout>
 
 
-        <ScrollView
+        <carbon.widget.ScrollView
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:layout_marginLeft="@dimen/dp_16"
             android:layout_marginRight="@dimen/dp_16">
 
-            <LinearLayout
+            <carbon.widget.LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -47,7 +47,7 @@
                 app:carbon_cornerRadius="@dimen/dp_4"
                 app:carbon_elevation="@dimen/dp_4">
 
-                <LinearLayout
+                <carbon.widget.LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -72,9 +72,9 @@
                         app:materialIcon="keyboard_off"
                         app:materialIconColor="@color/check_icon_unchecked" />
 
-                </LinearLayout>
+                </carbon.widget.LinearLayout>
 
-                <LinearLayout
+                <carbon.widget.LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -96,9 +96,9 @@
                         android:id="@+id/check_password_visible"
                         style="@style/IconButton"
                         app:materialIcon="eye" />
-                </LinearLayout>
+                </carbon.widget.LinearLayout>
 
-                <Button
+                <carbon.widget.Button
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -106,11 +106,11 @@
                     android:layout_marginTop="@dimen/dp_8"
                     android:enabled="@{!loginVM.loginInProgress}"
                     android:minWidth="@dimen/dp_128"
-                    app:onClick="@{loginVM.login}"
                     android:text="@{loginVM.loginInProgress ? @string/action_in_process : @string/login_action_sign_in, default=@string/login_action_sign_in}"
-                    app:carbon_cornerRadius="@dimen/dp_8" />
+                    app:carbon_cornerRadius="@dimen/dp_8"
+                    app:onClick="@{loginVM.login}" />
 
-                <Button
+                <carbon.widget.Button
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -118,18 +118,19 @@
                     android:layout_marginTop="@dimen/dp_8"
                     android:enabled="@{!loginVM.loginInProgress}"
                     android:minWidth="@dimen/dp_128"
-                    app:onClick="@{loginVM.register}"
                     android:text="@{loginVM.registerBtnText, default=@string/login_action_register}"
-                    app:carbon_cornerRadius="@dimen/dp_8" />
+                    app:carbon_cornerRadius="@dimen/dp_8"
+                    app:onClick="@{loginVM.register}" />
 
-                <LinearLayout
+                <carbon.widget.LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     app:carbon_cornerRadius="@dimen/dp_8">
 
-                    <Button
+                    <carbon.widget.Button
                         android:id="@+id/switch_retrieve"
                         style="@style/Button.Flat"
                         android:layout_width="wrap_content"
@@ -150,10 +151,10 @@
                         android:layout_height="wrap_content"
                         android:text="@string/login_action_register"
                         android:textSize="@dimen/dp_12"/>-->
-                </LinearLayout>
-            </LinearLayout>
-        </ScrollView>
+                </carbon.widget.LinearLayout>
+            </carbon.widget.LinearLayout>
+        </carbon.widget.ScrollView>
 
         <include layout="@layout/company_footer" />
-    </FrameLayout>
+    </carbon.widget.FrameLayout>
 </layout>
