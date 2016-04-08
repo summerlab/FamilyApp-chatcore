@@ -41,7 +41,7 @@ public class ContactOperationActivity extends BaseActivity {
         ((ActivityContactOperationBinding) binding).setVm(chatVM);
 
         //初始化已保存的邀请信息
-        invitationAdapter.setData(chatVM.contactManager.getInvitations());
+        invitationAdapter.setData(chatVM.getInvitationManager().getInvitations());
 
         //设置RecyclerView
         RecyclerView invitationRecycler = (RecyclerView) findViewById(R.id.invitation_recycler);

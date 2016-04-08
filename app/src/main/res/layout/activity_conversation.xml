@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="vm"
-            type="com.ivollo.chatcore.ChatVM" />
+            name="conversationManager"
+            type="com.ivollo.chatcore.conversation.ConversationManager" />
     </data>
 
     <carbon.widget.LinearLayout
@@ -24,7 +24,7 @@
 
             <carbon.widget.TextView
                 style="@style/Text.Inverse"
-                android:text="@{vm.conversationManager.contact.nickname, default = TARGET_NICKNAME}" />
+                android:text="@{conversationManager.contact.nickname, default = TARGET_NICKNAME}" />
 
         </carbon.widget.FrameLayout>
 
@@ -44,13 +44,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:bindEditText="@{vm.conversationManager.textToSend}" />
+                app:bindEditText="@{conversationManager.textToSend}" />
 
             <carbon.widget.Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="发送"
-                app:onClick="@{vm.conversationManager.sentTextMessage}" />
+                app:onClick="@{conversationManager.sentTextMessage}" />
         </LinearLayout>
     </carbon.widget.LinearLayout>
 </layout>

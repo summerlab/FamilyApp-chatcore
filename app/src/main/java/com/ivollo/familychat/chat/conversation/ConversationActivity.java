@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.ivollo.chatcore.ChatVM;
+import com.ivollo.chatcore.conversation.ConversationManager;
 import com.ivollo.chatcore.conversation.MessageListUpdatedEvent;
 import com.ivollo.commons.base.BindingActivity;
 import com.ivollo.familychat.R;
@@ -28,7 +29,7 @@ import butterknife.ButterKnife;
  */
 public class ConversationActivity extends BindingActivity {
     @Inject
-    ChatVM chatVM;
+    ConversationManager conversationManager;
 
 
     @Inject
@@ -36,7 +37,6 @@ public class ConversationActivity extends BindingActivity {
 
     @Bind(R.id.recycler_conversation)
     RecyclerView invitationRecycler;
-    LinearLayoutManager linearLayoutManager;
 
     @Override
     protected int getLayoutResId() {
@@ -47,10 +47,10 @@ public class ConversationActivity extends BindingActivity {
     @Override
     protected void initBinding(ViewDataBinding binding) {
         TheApplication.getApplicationComponent().inject(this);
-        ((ActivityConversationBinding) binding).setVm(chatVM);
+        ((ActivityConversationBinding) binding).setConversationManager(conversationManager);
         ButterKnife.bind(this);
         //初始化已保存的邀请信息
-        messageAdapter.setData(chatVM.conversationManager.messages);
+        messageAdapter.setData(conversationManager.messages);
         //设置RecyclerView
         invitationRecycler.setLayoutManager(new LinearLayoutManager(this));
         invitationRecycler.setAdapter(messageAdapter);

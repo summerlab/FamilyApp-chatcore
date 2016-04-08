@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity {
         ((ActivityMainBinding) binding).setMainVM(mainVM);
         ((ActivityMainBinding) binding).setChatVM(chatVM);
 
-        contactAdapter.setData(chatVM.contactManager.contacts);
+        contactAdapter.setData(chatVM.getContactManager().contacts);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.contacts_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

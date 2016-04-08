@@ -7,8 +7,8 @@
         <import type="android.view.View" />
 
         <variable
-            name="vm"
-            type="com.ivollo.chatcore.ChatVM" />
+            name="invitationManager"
+            type="com.ivollo.chatcore.contacts.InvitationManager" />
     </data>
 
     <carbon.widget.LinearLayout
@@ -56,7 +56,7 @@
                     android:hint="@string/friend_phone_hint"
                     android:inputType="number"
                     android:maxLength="11"
-                    app:bindEditText="@{vm.cellNumberToAdd}"
+                    app:bindEditText="@{invitationManager.cellphoneToInvite}"
                     app:carbon_floatingLabel="true" />
 
             </LinearLayout>
@@ -67,11 +67,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dp_8"
-                android:enabled="@{!vm.contactManager.inviteInProcess}"
+                android:enabled="@{!invitationManager.inviteInProcess}"
                 android:minWidth="@dimen/dp_128"
                 android:text="@string/contact_invitation_send"
                 app:carbon_cornerRadius="@dimen/dp_8"
-                app:onClick="@{vm.invite}" />
+                app:onClick="@{invitationManager.invite}" />
 
         </LinearLayout>
     </carbon.widget.LinearLayout>

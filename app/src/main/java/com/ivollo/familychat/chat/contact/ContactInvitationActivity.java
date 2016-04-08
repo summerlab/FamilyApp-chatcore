@@ -3,6 +3,7 @@ package com.ivollo.familychat.chat.contact;
 import android.databinding.ViewDataBinding;
 
 import com.ivollo.chatcore.ChatVM;
+import com.ivollo.chatcore.contacts.InvitationManager;
 import com.ivollo.familychat.BaseActivity;
 import com.ivollo.familychat.R;
 import com.ivollo.familychat.TheApplication;
@@ -18,7 +19,7 @@ import javax.inject.Inject;
  */
 public class ContactInvitationActivity extends BaseActivity {
     @Inject
-    ChatVM chatVM;
+    InvitationManager invitationManager;
 
     @Override
     protected int getLayoutResId() {
@@ -28,6 +29,6 @@ public class ContactInvitationActivity extends BaseActivity {
     @Override
     protected void initBinding(ViewDataBinding binding) {
         TheApplication.getApplicationComponent().inject(this);
-        ((ActivityContactInvitationBinding) binding).setVm(chatVM);
+        ((ActivityContactInvitationBinding) binding).setInvitationManager(invitationManager);
     }
 }
